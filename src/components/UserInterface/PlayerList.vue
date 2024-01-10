@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Player from "./Player.vue";
+
 // 플레이어는 2 ~ 4명
 const PLAYERS = [
   { name: "James" },
@@ -9,29 +11,25 @@ const PLAYERS = [
 </script>
 
 <template>
-  <div class="user-list">
+  <div class="player-list">
     <div
       v-for="(player, i) in PLAYERS"
       :key="player.name"
       :class="`player player-${i + 1}`"
     >
-      <div class="profile">
-        <img
-          class="profile-image"
-          src="https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg"
-        />
-        <p class="name">{{ player.name }}</p>
-      </div>
-      <p class="time">10:00</p>
+      <Player
+        :name="player.name"
+        profile-image="https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg"
+      />
     </div>
   </div>
 </template>
 
 <style>
-.user-list {
+.player-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 .player {
   display: flex;
@@ -58,31 +56,5 @@ const PLAYERS = [
 .player.player-4 {
   border: 0.4rem solid rgb(0, 150, 226);
   background-color: rgb(0, 166, 255);
-}
-
-.profile {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-.profile-image {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.name {
-  color: white;
-  font-size: 2rem;
-  max-width: 9rem;
-  padding: 0.5rem 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  font-weight: 600;
-}
-.time {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
 }
 </style>

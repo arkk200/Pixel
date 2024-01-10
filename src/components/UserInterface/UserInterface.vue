@@ -1,8 +1,18 @@
 <script setup lang="ts">
-import UserList from "./UserList.vue";
+import PlaceButton from "./PlaceButton.vue";
+import PlayerList from "./PlayerList.vue";
 </script>
 
 <template>
-  <UserList />
+  <div class="user-interface">
+    <PlayerList />
+    <PlaceButton />
+  </div>
 </template>
-<style scoped></style>
+<style scoped>
+.user-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+</style>
