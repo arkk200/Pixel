@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Tiles from "./Tiles.vue";
+import TopSlider from "./TopSlider.vue";
 </script>
 
 <template>
   <div class="container">
-    <div class="top-slider"></div>
+    <TopSlider class="top-slider" />
     <Tiles class="tiles" />
     <div class="side-slider"></div>
   </div>
@@ -19,6 +20,8 @@ import Tiles from "./Tiles.vue";
   display: grid;
   grid-template-rows: 6rem min-content 6rem;
   grid-template-columns: 6rem min-content 6rem;
+  align-items: center;
+  justify-content: center;
 }
 .tiles {
   grid-row: 2 / 3;
