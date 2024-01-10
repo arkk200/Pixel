@@ -6,6 +6,12 @@ import { useStore } from "vuex";
 const store = useStore(key);
 
 const topSlider = reactive(store.state.topSlider);
+const sideSlider = reactive(store.state.sideSlider);
+
+// 탑 슬라이더가 움직이면 사이드 슬라이더 제자리로 옮기기
+const initSideSlider = () => {
+  sideSlider.progress = sideSlider.prevProgress;
+};
 </script>
 
 <template>
@@ -24,6 +30,7 @@ const topSlider = reactive(store.state.topSlider);
     />
     <input
       v-model="topSlider.progress"
+      @input="initSideSlider"
       class="slider-input"
       type="range"
       min="0"

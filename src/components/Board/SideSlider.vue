@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import { key } from "@src/stores";
-import { reactive } from "vue";
+import { onUpdated, reactive } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore(key);
 
 const sideSlider = reactive(store.state.sideSlider);
+const topSlider = reactive(store.state.topSlider);
+
+// 사이드 슬라이더가 움직이면 탑 슬라이더 제자리로 옮기기
+const initTopSlider = () => {
+  topSlider.progress = topSlider.prevProgress;
+};
+
+onUpdated(() => {
+  console.log(sideSlider);
+});
 </script>
 
 <template>
@@ -24,6 +34,7 @@ const sideSlider = reactive(store.state.sideSlider);
     />
     <input
       v-model="sideSlider.progress"
+      @input="initTopSlider"
       class="slider-input"
       type="range"
       min="0"
