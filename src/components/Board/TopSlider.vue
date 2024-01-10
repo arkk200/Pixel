@@ -2,14 +2,21 @@
 import { ref } from "vue";
 
 let process = ref(0);
+const previewProcess = 0;
 </script>
 
 <template>
   <div class="slider">
     <div
+      class="thumb preview"
+      :style="{
+        '--preview-process': `${previewProcess}px`,
+      }"
+    />
+    <div
       class="thumb"
       :style="{
-        '--process': `${process * 4}px`,
+        '--process': `${process}px`,
       }"
     />
     <input
@@ -17,9 +24,8 @@ let process = ref(0);
       class="slider-input"
       type="range"
       min="0"
-      max="162"
+      max="648"
       step="1"
-      orient="vertical"
     />
   </div>
 </template>
@@ -27,45 +33,48 @@ let process = ref(0);
 <style scoped>
 .slider {
   position: relative;
-  width: 1rem;
-  height: calc(100% - 4rem);
-  margin: 2rem 0;
+  height: 1rem;
+  margin: 0 2rem;
   box-shadow: inset 0 -1px 5px 2px rgba(77, 71, 71, 0.5);
-  justify-self: center;
+  align-self: center;
 }
 
 .thumb {
   position: absolute;
-  bottom: calc(var(--process));
-  right: -0.5rem;
+  top: -0.5rem;
+  left: calc(var(--process));
 
-  width: 4.5rem;
-  height: 3rem;
+  width: 3rem;
+  height: 4.5rem;
 
   background-color: black;
-  clip-path: polygon(66% 0, 100% 0, 100% 100%, 66% 100%, 0 52%);
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 50% 100%, 0 33%);
+}
+
+.thumb.preview {
+  background-color: lightgray;
+  left: calc(var(--preview-process));
 }
 
 .slider-input {
   appearance: none;
-  writing-mode: vertical-lr;
-  height: 100%;
-  width: 16px;
+  width: 100%;
+  height: 16px;
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 0;
 }
 
 .slider-input::-webkit-slider-runnable-track {
-  margin-right: 2.5rem;
+  margin-top: 2.5rem;
   cursor: pointer;
 }
 
 .slider-input::-webkit-slider-thumb {
   appearance: none;
-  width: 4.5rem;
-  height: 3rem;
+  width: 3rem;
+  height: 4.5rem;
 }
 </style>
