@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { key } from "@src/stores";
+import { reactive } from "vue";
+import { useStore } from "vuex";
 
-let process = ref(0);
-const previewProcess = 0;
+const store = useStore(key);
+
+const topSlider = reactive(store.state.topSlider);
 </script>
 
 <template>
@@ -10,17 +13,17 @@ const previewProcess = 0;
     <div
       class="thumb preview"
       :style="{
-        '--preview-process': `${previewProcess}px`,
+        '--preview-progress': `${topSlider.previewProcess}px`,
       }"
     />
     <div
       class="thumb"
       :style="{
-        '--process': `${process}px`,
+        '--progress': `${topSlider.progress}px`,
       }"
     />
     <input
-      v-model="process"
+      v-model="topSlider.progress"
       class="slider-input"
       type="range"
       min="0"
@@ -42,7 +45,7 @@ const previewProcess = 0;
 .thumb {
   position: absolute;
   top: -0.5rem;
-  left: calc(var(--process));
+  left: calc(var(--progress));
 
   width: 3rem;
   height: 4.5rem;
@@ -53,7 +56,7 @@ const previewProcess = 0;
 
 .thumb.preview {
   background-color: lightgray;
-  left: calc(var(--preview-process));
+  left: calc(var(--preview-progress));
 }
 
 .slider-input {
