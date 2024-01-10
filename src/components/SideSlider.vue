@@ -19,6 +19,7 @@ let process = ref(0);
       min="0"
       max="162"
       step="1"
+      orient="vertical"
     />
   </div>
 </template>
@@ -26,43 +27,45 @@ let process = ref(0);
 <style scoped>
 .slider {
   position: relative;
-  height: 1rem;
-  margin: 0 2rem;
+  width: 1rem;
+  height: calc(100% - 4rem);
+  margin: 2rem 0;
   box-shadow: inset 0 -1px 5px 2px rgba(77, 71, 71, 0.5);
-  align-self: center;
+  justify-self: center;
 }
 
 .thumb {
   position: absolute;
-  top: -0.5rem;
-  left: calc(var(--process));
+  bottom: calc(var(--process));
+  right: -0.5rem;
 
-  width: 3rem;
-  height: 4.5rem;
+  width: 4.5rem;
+  height: 3rem;
 
   background-color: black;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 50% 100%, 0 33%);
+  clip-path: polygon(66% 0, 100% 0, 100% 100%, 66% 100%, 0 52%);
 }
 
 .slider-input {
   appearance: none;
-  width: 100%;
-  height: 16px;
+  writing-mode: vertical-lr;
+  height: 100%;
+  width: 16px;
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   opacity: 0;
 }
 
 .slider-input::-webkit-slider-runnable-track {
-  margin-top: 2.5rem;
+  margin-right: 2.5rem;
   cursor: pointer;
 }
 
 .slider-input::-webkit-slider-thumb {
   appearance: none;
-  width: 3rem;
-  height: 4.5rem;
+  width: 4.5rem;
+  height: 3rem;
 }
 </style>
