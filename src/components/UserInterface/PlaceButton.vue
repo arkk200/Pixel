@@ -12,13 +12,19 @@
 
   border-radius: 0.75rem;
 
-  border: 0.4rem solid rgb(221, 221, 221);
-  background-color: rgb(227, 227, 227);
+  border: 0.4rem solid rgb(208, 206, 206);
+  background-color: rgb(219, 219, 219);
 
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
 
   cursor: pointer;
+}
+.place-button:hover {
+  filter: brightness(102%);
+}
+.place-button:active {
+  filter: brightness(98%);
 }
 </style>

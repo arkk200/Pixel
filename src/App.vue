@@ -10,6 +10,6 @@ import UserInterface from "./components/UserInterface/UserInterface.vue";
 
 <style scoped>
 .user-interface {
-  margin-left: 2rem;
+  margin-left: 6rem;
 }
 </style>

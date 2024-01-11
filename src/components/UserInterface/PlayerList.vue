@@ -3,23 +3,21 @@ import Player from "./Player.vue";
 
 // 플레이어는 2 ~ 4명
 const PLAYERS = [
-  { name: "James" },
-  { name: "Jake" },
-  { name: "John" },
-  { name: "Jay" },
+  { name: "James", isPlayerTurn: false },
+  { name: "Jake", isPlayerTurn: false },
+  { name: "John", isPlayerTurn: false },
+  { name: "Jay", isPlayerTurn: true },
 ];
 </script>
 
 <template>
   <div class="player-list">
-    <div
-      v-for="(player, i) in PLAYERS"
-      :key="player.name"
-      :class="`player player-${i + 1}`"
-    >
+    <div v-for="(player, i) in PLAYERS" :key="player.name">
       <Player
         :name="player.name"
         profile-image="https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg"
+        :is-player-turn="player.isPlayerTurn"
+        :class="`player player-${i + 1}`"
       />
     </div>
   </div>
@@ -29,7 +27,7 @@ const PLAYERS = [
 .player-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 .player {
   display: flex;
@@ -37,7 +35,9 @@ const PLAYERS = [
   justify-content: space-between;
 
   width: 18rem;
-  padding: 1rem 1.5rem;
+  min-height: 6.75rem;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
 
   border-radius: 0.75rem;
 }
@@ -47,7 +47,7 @@ const PLAYERS = [
 }
 .player.player-2 {
   border: 0.4rem solid rgb(238, 222, 1);
-  background-color: rgb(253, 236, 0);
+  background-color: rgb(249, 233, 2);
 }
 .player.player-3 {
   border: 0.4rem solid rgb(1, 210, 32);
