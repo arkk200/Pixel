@@ -1,7 +1,4 @@
-import {
-  INITIAL_SIDE_SLIDER_PROGRESS,
-  INITIAL_TOP_SLIDER_PROGRESS,
-} from "@src/constants";
+import { INITIAL_SLIDER_PROGRESS } from "@src/constants";
 import { createStore } from "vuex";
 
 export const key = Symbol("store");
@@ -10,12 +7,12 @@ export const store = createStore({
   state() {
     return {
       topSlider: {
-        progress: INITIAL_TOP_SLIDER_PROGRESS,
-        prevProgress: INITIAL_TOP_SLIDER_PROGRESS,
+        progress: INITIAL_SLIDER_PROGRESS,
+        prevProgress: INITIAL_SLIDER_PROGRESS,
       },
       sideSlider: {
-        progress: INITIAL_SIDE_SLIDER_PROGRESS,
-        prevProgress: INITIAL_SIDE_SLIDER_PROGRESS,
+        progress: INITIAL_SLIDER_PROGRESS,
+        prevProgress: INITIAL_SLIDER_PROGRESS,
       },
       board: [
         // 인덱스[][]
