@@ -15,7 +15,7 @@ import UserInterface from "@src/components/play/UserInterface/UserInterface.vue"
   display: flex;
   align-items: center;
   width: fit-content;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 6rem;
   margin: 0 auto;
 }

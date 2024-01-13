@@ -123,6 +123,17 @@ table {
   border-spacing: 0;
 }
 
+button,
+input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
 @font-face {
   font-family: "Pretendard Variable";
   font-weight: 45 920;
@@ -131,6 +142,9 @@ table {
   src: url("./fonts/PretendardVariable.woff2") format("woff2-variations");
 }
 
-p {
+p,
+button,
+input,
+textarea {
   font-family: "Pretendard Variable";
 }
