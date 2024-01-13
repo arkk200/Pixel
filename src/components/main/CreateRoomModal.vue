@@ -3,8 +3,8 @@ import CloseIcon from "../icons/CloseIcon.vue";
 </script>
 
 <template>
-  <div class="quick-join-modal">
-    <p class="title">빠른 참가</p>
+  <div class="create-room-modal">
+    <p class="title">방 만들기</p>
     <p class="player-number">플레이어</p>
     <div class="buttons">
       <button>2명</button>
@@ -12,7 +12,7 @@ import CloseIcon from "../icons/CloseIcon.vue";
       <button>4명</button>
     </div>
     <button
-      popovertarget="quick-join-modal"
+      popovertarget="create-room-modal"
       popovertargetaction="hide"
       class="close"
     >
@@ -22,25 +22,25 @@ import CloseIcon from "../icons/CloseIcon.vue";
 </template>
 
 <style scoped>
-.quick-join-modal {
+.create-room-modal {
   padding: 1.25rem;
   border-radius: 0.75rem;
   box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
   margin: auto;
 }
 
-.quick-join-modal::backdrop {
+.create-room-modal::backdrop {
   background: rgb(0, 0, 0, 0.2);
 }
 
-.quick-join-modal .title {
+.create-room-modal .title {
   color: black;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.quick-join-modal .player-number {
+.create-room-modal .player-number {
   margin-top: 1.3rem;
   color: black;
   text-align: center;
@@ -48,13 +48,13 @@ import CloseIcon from "../icons/CloseIcon.vue";
   font-weight: 700;
 }
 
-.quick-join-modal .buttons {
+.create-room-modal .buttons {
   display: flex;
   gap: 1rem;
   margin-top: 0.8rem;
 }
 
-.quick-join-modal .buttons button {
+.create-room-modal .buttons button {
   padding: 0.5rem 1rem;
   background-image: url(/assets/wood.jpg);
   box-shadow: 0.2rem 0.2rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CreateRoomModal from "@src/components/main/CreateRoomModal.vue";
 import QuickJoinModal from "@src/components/main/QuickJoinModal.vue";
 import { ref } from "vue";
 
@@ -18,10 +19,11 @@ const name = ref("");
       </div>
       <div class="buttons">
         <button popovertarget="quick-join-modal">빠른 참가</button>
-        <button>방 만들기</button>
+        <button popovertarget="create-room-modal">방 만들기</button>
       </div>
     </div>
     <QuickJoinModal id="quick-join-modal" popover />
+    <CreateRoomModal id="create-room-modal" popover />
   </div>
 </template>
 
