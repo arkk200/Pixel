@@ -1,15 +1,5 @@
-<script setup lang="ts">
-import Board from "./components/Board/Board.vue";
-import UserInterface from "./components/UserInterface/UserInterface.vue";
-</script>
-
 <template>
-  <Board />
-  <UserInterface class="user-interface" />
+  <router-view />
 </template>
 
-<style scoped>
-.user-interface {
-  margin-left: 6rem;
-}
-</style>
+<style scoped></style>

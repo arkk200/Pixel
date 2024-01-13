@@ -273,7 +273,7 @@
     "@vue/compiler-dom" "3.4.7"
     "@vue/shared" "3.4.7"
 
-"@vue/devtools-api@^6.0.0-beta.11":
+"@vue/devtools-api@^6.0.0-beta.11", "@vue/devtools-api@^6.5.0":
   version "6.5.1"
   resolved "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.5.1.tgz"
   integrity sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==
@@ -510,6 +510,13 @@ vite@^5.0.8:
     rollup "^4.2.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+vue-router@^4.2.5:
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.2.5.tgz#b9e3e08f1bd9ea363fdd173032620bc50cf0e98a"
+  integrity sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==
+  dependencies:
+    "@vue/devtools-api" "^6.5.0"
 
 vue-template-compiler@^2.7.14:
   version "2.7.16"
