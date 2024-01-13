@@ -1,0 +1,69 @@
+<script setup lang="ts">
+import CloseIcon from "../icons/CloseIcon.vue";
+</script>
+
+<template>
+  <div class="quick-join-modal">
+    <p class="player-number">플레이어</p>
+    <div class="buttons">
+      <button>2명</button>
+      <button>3명</button>
+      <button>4명</button>
+    </div>
+    <button
+      popovertarget="quick-join-modal"
+      popovertargetaction="hide"
+      class="close"
+    >
+      <CloseIcon class="close-icon" />
+    </button>
+  </div>
+</template>
+
+<style scoped>
+.quick-join-modal {
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
+  margin: auto;
+}
+
+.quick-join-modal::backdrop {
+  background: rgb(0, 0, 0, 0.2);
+}
+
+.quick-join-modal .player-number {
+  color: black;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.quick-join-modal .buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quick-join-modal .buttons button {
+  padding: 0.5rem 1rem;
+  background-image: url(/assets/wood.jpg);
+  box-shadow: 0.2rem 0.2rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.close-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  color: rgb(206, 206, 206);
+  cursor: pointer;
+}
+</style>

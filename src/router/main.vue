@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import QuickJoinModal from "@src/components/main/QuickJoinModal.vue";
 import { ref } from "vue";
 
 const name = ref("");
@@ -16,10 +17,11 @@ const name = ref("");
         <input v-model="name" class="nickname-input" />
       </div>
       <div class="buttons">
-        <button>빠른 참가</button>
+        <button popovertarget="quick-join-modal">빠른 참가</button>
         <button>방 만들기</button>
       </div>
     </div>
+    <QuickJoinModal id="quick-join-modal" popover />
   </div>
 </template>
 
@@ -33,7 +35,7 @@ const name = ref("");
   width: 100vw;
   height: 100vh;
   background-color: #00686e;
-  box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
 }
 .hero {
   display: flex;
