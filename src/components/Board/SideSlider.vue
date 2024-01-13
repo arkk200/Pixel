@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { key } from "@src/stores";
-import { onUpdated, reactive } from "vue";
+import { reactive } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore(key);
@@ -12,10 +12,6 @@ const topSlider = reactive(store.state.topSlider);
 const initTopSlider = () => {
   topSlider.progress = topSlider.prevProgress;
 };
-
-onUpdated(() => {
-  console.log(sideSlider);
-});
 </script>
 
 <template>
@@ -53,6 +49,8 @@ onUpdated(() => {
   margin: 2rem 0;
   box-shadow: inset 0 -1px 5px 2px rgba(77, 71, 71, 0.5);
   justify-self: center;
+
+  transform: rotate(180deg) scaleX(-1);
 }
 
 .thumb {
