@@ -7,22 +7,22 @@ import EmptyTile from "./EmptyTile.vue";
 import Tile from "./Tile.vue";
 
 const store = useStore(key);
-const topSliderProgress = ref(0);
-const sideSliderProgress = ref(0);
+const topSliderIndex = ref(0);
+const sideSliderIndex = ref(0);
 
-const updateSliderProgress = (state: typeof store.state) => {
-  topSliderProgress.value = normalizeProgress(state.topSlider.progress);
-  sideSliderProgress.value = normalizeProgress(state.sideSlider.progress);
+const updateSliderIndex = (state: typeof store.state) => {
+  topSliderIndex.value = normalizeProgress(state.topSlider.progress);
+  sideSliderIndex.value = normalizeProgress(state.sideSlider.progress);
 };
 
 onMounted(() => {
-  updateSliderProgress(store.state);
+  updateSliderIndex(store.state);
 });
 
-watch(store.state, updateSliderProgress);
+watch(store.state, updateSliderIndex);
 
 const isFocused = (x: number, y: number) => {
-  return sideSliderProgress.value === x && topSliderProgress.value === y;
+  return sideSliderIndex.value === x && topSliderIndex.value === y;
 };
 </script>
 
