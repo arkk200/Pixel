@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { key } from "@src/stores";
 import normalizeProgress from "@src/utils/normalizeProgress";
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import EmptyTile from "./EmptyTile.vue";
 import Tile from "./Tile.vue";
@@ -10,10 +10,16 @@ const store = useStore(key);
 const topSliderProgress = ref(0);
 const sideSliderProgress = ref(0);
 
-watch(store.state, (newState) => {
-  topSliderProgress.value = normalizeProgress(newState.topSlider.progress);
-  sideSliderProgress.value = normalizeProgress(newState.sideSlider.progress);
+const updateSliderProgress = (state: typeof store.state) => {
+  topSliderProgress.value = normalizeProgress(state.topSlider.progress);
+  sideSliderProgress.value = normalizeProgress(state.sideSlider.progress);
+};
+
+onMounted(() => {
+  updateSliderProgress(store.state);
 });
+
+watch(store.state, updateSliderProgress);
 
 const isFocused = (x: number, y: number) => {
   return sideSliderProgress.value === x && topSliderProgress.value === y;
@@ -22,10 +28,14 @@ const isFocused = (x: number, y: number) => {
 
 <template>
   <div class="tiles">
-    <div class="row" v-for="(_, x) in Array(8)">
-      <div v-for="(_, y) in Array(8)">
+    <div class="row" v-for="(row, x) in store.state.board">
+      <div v-for="(playerIndex, y) in row">
         <EmptyTile v-if="(x === 0 || x === 7) && (y === 0 || y === 7)" />
-        <Tile v-else :x="x" :y="y" :class="{ 'is-focused': isFocused(x, y) }" />
+        <Tile
+          v-else
+          :player-index="playerIndex"
+          :class="{ 'is-focused': isFocused(x, y) }"
+        />
       </div>
     </div>
   </div>
@@ -45,6 +55,6 @@ const isFocused = (x: number, y: number) => {
   gap: 0.5rem;
 }
 .is-focused {
-  outline: 0.25rem solid red;
+  outline: 0.4rem solid rgb(0, 242, 255);
 }
 </style>

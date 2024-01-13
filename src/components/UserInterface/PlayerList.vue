@@ -1,22 +1,19 @@
 <script setup lang="ts">
+import { key } from "@src/stores";
+import { useStore } from "vuex";
 import Player from "./Player.vue";
 
-// 플레이어는 2 ~ 4명
-const PLAYERS = [
-  { name: "James", isPlayerTurn: false },
-  { name: "Jake", isPlayerTurn: false },
-  { name: "John", isPlayerTurn: false },
-  { name: "Jay", isPlayerTurn: true },
-];
+const store = useStore(key);
+const { playerList, whoseTurn } = store.state;
 </script>
 
 <template>
   <div class="player-list">
-    <div v-for="(player, i) in PLAYERS" :key="player.name">
+    <div v-for="(player, i) in playerList" :key="player.name">
       <Player
         :name="player.name"
         profile-image="https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg"
-        :is-player-turn="player.isPlayerTurn"
+        :is-player-turn="i === whoseTurn"
         :class="`player player-${i + 1}`"
       />
     </div>
@@ -42,19 +39,19 @@ const PLAYERS = [
   border-radius: 0.75rem;
 }
 .player.player-1 {
-  border: 0.4rem solid rgb(237, 87, 0);
-  background-color: rgb(255, 98, 0);
+  border: 0.4rem solid #ed5700;
+  background-color: #ff6200;
 }
 .player.player-2 {
-  border: 0.4rem solid rgb(238, 222, 1);
-  background-color: rgb(249, 233, 2);
+  border: 0.4rem solid #eede01;
+  background-color: #f9e902;
 }
 .player.player-3 {
-  border: 0.4rem solid rgb(1, 210, 32);
-  background-color: rgb(0, 230, 12);
+  border: 0.4rem solid #01d220;
+  background-color: #00e60c;
 }
 .player.player-4 {
-  border: 0.4rem solid rgb(0, 150, 226);
-  background-color: rgb(0, 166, 255);
+  border: 0.4rem solid #0096e2;
+  background-color: #00a6ff;
 }
 </style>

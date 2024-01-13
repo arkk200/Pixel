@@ -19,7 +19,7 @@ const initSideSlider = () => {
     <div
       class="thumb preview"
       :style="{
-        '--preview-progress': `${topSlider.previewProcess}px`,
+        '--prev-progress': `${topSlider.prevProgress}px`,
       }"
     />
     <div
@@ -63,7 +63,7 @@ const initSideSlider = () => {
 
 .thumb.preview {
   background-color: lightgray;
-  left: calc(var(--preview-progress));
+  left: calc(var(--prev-progress));
 }
 
 .slider-input {
