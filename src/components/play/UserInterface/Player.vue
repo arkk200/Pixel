@@ -7,14 +7,35 @@ const { name, profileImage } = defineProps<{
 </script>
 
 <template>
-  <p v-if="isPlayerTurn" class="time">10:00</p>
-  <div v-else class="profile">
-    <img class="profile-image" :src="profileImage" />
-    <p class="name">{{ name }}</p>
+  <div class="player">
+    <p v-if="isPlayerTurn" class="time">10:00</p>
+    <div v-else class="profile">
+      <img class="profile-image" :src="profileImage" />
+      <p class="name">{{ name }}</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18rem;
+  min-height: 6.75rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  border-radius: 0.75rem;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 18rem;
+}
 .profile-image {
   width: 4rem;
   height: 4rem;
@@ -23,7 +44,6 @@ const { name, profileImage } = defineProps<{
   flex-shrink: 0;
 }
 .name {
-  max-width: 9rem;
   padding: 0.5rem 0;
 
   overflow: hidden;
