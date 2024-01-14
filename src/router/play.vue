@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from "@src/components/layouts/AppLayout.vue";
-import Board from "@src/components/play/Board/Board.vue";
-import UserInterface from "@src/components/play/UserInterface/UserInterface.vue";
+import Board from "@src/components/pages/play/Board/Board.vue";
+import UserInterface from "@src/components/pages/play/UserInterface/UserInterface.vue";
 </script>
 
 <template>
