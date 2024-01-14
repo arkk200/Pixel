@@ -29,15 +29,26 @@ const name = ref("");
 
 <style scoped>
 .main {
-  position: fixed;
+  box-sizing: border-box;
+
+  position: absolute;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+
+  width: 100%;
+  min-width: min-content;
+  height: 100%;
+  min-height: 100vh;
+
+  padding: 3rem 6rem;
+
   background-color: #00686e;
   box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+
+  z-index: 0;
 }
 .hero {
   display: flex;

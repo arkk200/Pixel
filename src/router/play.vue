@@ -12,12 +12,22 @@ import UserInterface from "@src/components/play/UserInterface/UserInterface.vue"
 
 <style scoped>
 .play {
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
-  width: fit-content;
+  justify-content: center;
+
+  width: 100%;
+  min-width: min-content;
+  height: 100%;
   min-height: 100vh;
-  padding: 0 6rem;
+
   margin: 0 auto;
+  padding: 3rem 6rem;
+
+  background-color: #00686e;
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
 }
 .user-interface {
   margin-left: 6rem;
