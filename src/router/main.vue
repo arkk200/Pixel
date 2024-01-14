@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import Logo from "@src/components/common/Logo.vue";
 import AppLayout from "@src/components/layouts/AppLayout.vue";
 import CreateRoomModal from "@src/components/main/CreateRoomModal.vue";
 import Form from "@src/components/main/Form.vue";
-import Hero from "@src/components/main/Hero.vue";
 import QuickJoinModal from "@src/components/main/QuickJoinModal.vue";
 </script>
 
 <template>
   <AppLayout class="layout">
-    <Hero />
+    <Logo :size="16" />
     <Form />
     <QuickJoinModal id="quick-join-modal" popover />
     <CreateRoomModal id="create-room-modal" popover />
