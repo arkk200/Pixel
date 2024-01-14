@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppLayout from "@src/components/layouts/AppLayout.vue";
 import CreateRoomModal from "@src/components/main/CreateRoomModal.vue";
 import QuickJoinModal from "@src/components/main/QuickJoinModal.vue";
 import { ref } from "vue";
@@ -7,7 +8,7 @@ const name = ref("");
 </script>
 
 <template>
-  <div class="main">
+  <AppLayout class="layout">
     <div class="hero">
       <img src="/assets/pixel-board.png" class="board-image" />
       <p class="title">PIXEL.IO</p>
@@ -24,30 +25,13 @@ const name = ref("");
     </div>
     <QuickJoinModal id="quick-join-modal" popover />
     <CreateRoomModal id="create-room-modal" popover />
-  </div>
+  </AppLayout>
 </template>
 
 <style scoped>
-.main {
-  box-sizing: border-box;
-
+.layout {
   position: absolute;
-
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  min-width: min-content;
-  height: 100%;
-  min-height: 100vh;
-
-  padding: 3rem 6rem;
-
-  background-color: #00686e;
-  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
-
   z-index: 0;
 }
 .hero {
