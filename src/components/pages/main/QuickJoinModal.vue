@@ -33,14 +33,14 @@ import CloseIcon from "../../icons/CloseIcon.vue";
   background: rgb(0, 0, 0, 0.2);
 }
 
-.quick-join-modal .title {
+.title {
   color: black;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.quick-join-modal .player-number {
+.player-number {
   margin-top: 1.3rem;
   color: black;
   text-align: center;
@@ -48,13 +48,13 @@ import CloseIcon from "../../icons/CloseIcon.vue";
   font-weight: 700;
 }
 
-.quick-join-modal .buttons {
+.buttons {
   display: flex;
   gap: 1rem;
   margin-top: 0.8rem;
 }
 
-.quick-join-modal .buttons button {
+.buttons button {
   padding: 0.5rem 1rem;
   background-image: url(/assets/wood.jpg);
   box-shadow: 0.2rem 0.2rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
@@ -62,6 +62,13 @@ import CloseIcon from "../../icons/CloseIcon.vue";
   border-radius: 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
+}
+.buttons button:hover {
+  filter: brightness(103%);
+}
+.buttons button:active {
+  transform: translate(0.1rem, 0.1rem);
+  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
 }
 
 .close {
