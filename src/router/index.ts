@@ -6,6 +6,11 @@ const router = createRouter({
     { path: "/", name: "main", component: () => import("./main.vue") },
     { path: "/play", name: "play", component: () => import("./play.vue") },
     { path: "/room", name: "room", component: () => import("./room.vue") },
+    {
+      path: "/join/:roomId",
+      name: "join",
+      component: () => import("./join.vue"),
+    },
   ],
 });
 
