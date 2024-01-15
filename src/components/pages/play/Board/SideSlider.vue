@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { key } from "@src/stores";
 import { reactive } from "vue";
 import { useStore } from "vuex";
 
-const store = useStore(key);
+const store = useStore();
 
 const sideSlider = reactive(store.state.sideSlider);
 const topSlider = reactive(store.state.topSlider);

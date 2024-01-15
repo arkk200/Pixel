@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { key } from "@src/stores";
 import normalizeProgress from "@src/utils/normalizeProgress";
 import { useStore } from "vuex";
 
-const store = useStore(key);
+const store = useStore();
 const placeMok = () => {
   let { topSlider, sideSlider, whoseTurn, board, playerList } = store.state;
 

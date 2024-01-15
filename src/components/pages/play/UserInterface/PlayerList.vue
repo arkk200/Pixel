@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { key } from "@src/stores";
 import { ref, watch } from "vue";
 import { useStore } from "vuex";
 import Player from "./Player.vue";
 
-const store = useStore(key);
+const store = useStore();
 const { playerList } = store.state;
 
 const whoseTurn = ref(0);

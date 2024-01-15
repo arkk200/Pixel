@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { key } from "@src/stores";
 import normalizeProgress from "@src/utils/normalizeProgress";
 import { onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import EmptyTile from "./EmptyTile.vue";
 import Tile from "./Tile.vue";
 
-const store = useStore(key);
+const store = useStore();
 const topSliderIndex = ref(0);
 const sideSliderIndex = ref(0);
 

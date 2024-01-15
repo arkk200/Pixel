@@ -1,8 +1,6 @@
 import { INITIAL_SLIDER_PROGRESS } from "@src/constants";
 import { createStore } from "vuex";
 
-export const key = Symbol("store");
-
 export const store = createStore({
   state() {
     return {
