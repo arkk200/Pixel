@@ -25,13 +25,13 @@ export const store = createStore({
         [-1, -1, -1, -1, -1, -1, -1, -1],
         [-2, -1, -1, -1, -1, -1, -1, -2],
       ],
+      whoseTurn: 0, // 인덱스
       playerList: [
         { id: 1, name: "James" },
         { id: 2, name: "Jake" },
         { id: 3, name: "John" },
         { id: 4, name: "Jay" },
       ],
-      whoseTurn: 0, // 인덱스
     };
   },
 });
