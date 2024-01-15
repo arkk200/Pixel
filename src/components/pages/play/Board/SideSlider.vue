@@ -4,8 +4,8 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
-const sideSlider = reactive(store.state.sideSlider);
-const topSlider = reactive(store.state.topSlider);
+const sideSlider = reactive(store.state.gameData.sideSlider);
+const topSlider = reactive(store.state.gameData.topSlider);
 
 // 사이드 슬라이더가 움직이면 탑 슬라이더 제자리로 옮기기
 const initTopSlider = () => {

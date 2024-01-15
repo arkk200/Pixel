@@ -4,11 +4,11 @@ import { useStore } from "vuex";
 import Player from "./Player.vue";
 
 const store = useStore();
-const { playerList } = store.state;
+const { playerList } = store.state.gameData;
 
 const whoseTurn = ref(0);
 watch(store.state, (newState) => {
-  whoseTurn.value = newState.whoseTurn;
+  whoseTurn.value = newState.gameData.whoseTurn;
 });
 </script>
 

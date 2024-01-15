@@ -13,14 +13,14 @@ const placeMok = () => {
   if (board[sideSliderIndex][topSliderIndex] !== -1) return;
 
   // board에 목 추가하기
-  store.state.board[sideSliderIndex][topSliderIndex] = whoseTurn;
+  store.state.gameData.board[sideSliderIndex][topSliderIndex] = whoseTurn;
 
   // 슬라이더 prevProgress 값 바꾸기
-  store.state.topSlider.prevProgress = topSlider.progress;
-  store.state.sideSlider.prevProgress = sideSlider.progress;
+  store.state.gameData.topSlider.prevProgress = topSlider.progress;
+  store.state.gameData.sideSlider.prevProgress = sideSlider.progress;
 
   // 순서 한 차례 이동하기
-  store.state.whoseTurn = (whoseTurn + 1) % playerList.length;
+  store.state.gameData.whoseTurn = (whoseTurn + 1) % playerList.length;
 };
 </script>
 

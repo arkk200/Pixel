@@ -10,8 +10,8 @@ const topSliderIndex = ref(0);
 const sideSliderIndex = ref(0);
 
 const updateSliderIndex = (state: typeof store.state) => {
-  topSliderIndex.value = normalizeProgress(state.topSlider.progress);
-  sideSliderIndex.value = normalizeProgress(state.sideSlider.progress);
+  topSliderIndex.value = normalizeProgress(state.gameData.topSlider.progress);
+  sideSliderIndex.value = normalizeProgress(state.gameData.sideSlider.progress);
 };
 
 onMounted(() => {
@@ -27,7 +27,7 @@ const isFocused = (x: number, y: number) => {
 
 <template>
   <div class="tiles">
-    <div class="row" v-for="(row, x) in store.state.board">
+    <div class="row" v-for="(row, x) in store.state.gameData.board">
       <div v-for="(playerIndex, y) in row">
         <EmptyTile v-if="(x === 0 || x === 7) && (y === 0 || y === 7)" />
         <Tile
