@@ -1,10 +1,8 @@
-import GameOverByDisconnectedModalVue from "@src/components/pages/main/GameOverByDisconnectedModal.vue";
-import GameOverByLoseModalVue from "@src/components/pages/main/GameOverByLoseModal.vue";
-import GameOverByWinModalVue from "@src/components/pages/main/GameOverByWinModal.vue";
 import router from "@src/router";
 import { store } from "@src/stores";
+import { color } from "@src/styles/theme";
 import { io } from "socket.io-client";
-import { useModal } from "vue-final-modal";
+import { toast } from "vue3-toastify";
 
 const serverURL = import.meta.env.PROD ? null : import.meta.env.VITE_SERVER_URL;
 export const socket = io(serverURL);
@@ -20,50 +18,33 @@ socket.on("updateGame", (gameData) => {
 });
 
 socket.on("gameOver:disconnecting", () => {
-  const { open, close } = useModal({
-    component: GameOverByDisconnectedModalVue,
-    attrs: {
-      onConfirm() {
-        close();
-      },
-    },
-  });
+  router.push("/").then(() => {
+    store.state.isInGame = false;
 
-  router.push("/");
-  store.state.isInGame = false;
-  open();
+    toast.warning("누군가가 게임을 나갔습니다");
+  });
 });
 
-socket.on("gameOver:lose", ({ losePlayerName }) => {
-  const { open, close } = useModal({
-    component: GameOverByLoseModalVue,
-    attrs: {
-      profileImage:
-        "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-      playerName: losePlayerName,
-      onConfirm() {
-        close();
-        router.push("/");
-        store.state.isInGame = false;
-      },
+socket.on("gameOver:lose", ({ losePlayerName, whoseTurn }) => {
+  toast(`${losePlayerName}이/가 졌습니다`, {
+    position: "top-center",
+    theme: "colored",
+    toastStyle: {
+      backgroundColor:
+        color[`player${whoseTurn + 1}` as keyof typeof color].primary,
+      color: "white",
     },
   });
-  open();
 });
 
-socket.on("gameOver:win", ({ winPlayerName }) => {
-  const { open, close } = useModal({
-    component: GameOverByWinModalVue,
-    attrs: {
-      profileImage:
-        "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-      playerName: winPlayerName,
-      onConfirm() {
-        close();
-        router.push("/");
-        store.state.isInGame = false;
-      },
+socket.on("gameOver:win", ({ winPlayerName, whoseTurn }) => {
+  toast(`${winPlayerName}이/가 이겼습니다`, {
+    position: "top-center",
+    theme: "colored",
+    toastStyle: {
+      backgroundColor:
+        color[`player${whoseTurn + 1}` as keyof typeof color].primary,
+      color: "white",
     },
   });
-  open();
 });
