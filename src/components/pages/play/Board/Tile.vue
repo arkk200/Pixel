@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { playerIndex } = defineProps<{ playerIndex: -2 | -1 | 0 | 1 | 2 | 3 }>();
-console.log(playerIndex);
 </script>
 
 <template>

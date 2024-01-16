@@ -7,8 +7,6 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
     order: 1 | 2 | 3 | 4;
     remainSeconds: number;
   }>();
-
-console.log(remainSeconds);
 </script>
 
 <template>

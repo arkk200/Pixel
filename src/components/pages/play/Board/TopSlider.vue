@@ -1,16 +1,24 @@
 <script setup lang="ts">
+import { socket } from "@src/socket";
 import { State } from "@src/stores/types";
-import { reactive } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore<State>();
 
-const topSlider = reactive(store.state.gameData.topSlider);
-const sideSlider = reactive(store.state.gameData.sideSlider);
+const topSlider = computed(() => store.state.gameData.topSlider);
+const sideSlider = computed(() => store.state.gameData.sideSlider);
 
-// 탑 슬라이더가 움직이면 사이드 슬라이더 제자리로 옮기기
+// 탑 슬라이더가 움직이면
 const initSideSlider = () => {
-  sideSlider.progress = sideSlider.prevProgress;
+  // 사이드 슬라이더 제자리로 옮기고
+  sideSlider.value.progress = sideSlider.value.prevProgress;
+
+  // 바뀐 위치 알리기
+  socket.emit("updateSlider", {
+    sliderPosition: "TOP",
+    progress: topSlider.value.progress,
+  });
 };
 </script>
 
