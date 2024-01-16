@@ -3,7 +3,7 @@ import CloseIcon from "../../icons/CloseIcon.vue";
 </script>
 
 <template>
-  <div class="create-room-modal">
+  <div id="create-room-modal" popover class="create-room-modal">
     <p class="title">방 만들기</p>
     <p class="player-number">플레이어 수</p>
     <div class="buttons">

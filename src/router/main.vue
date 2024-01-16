@@ -10,8 +10,8 @@ import QuickJoinModal from "@src/components/pages/main/QuickJoinModal.vue";
   <AppLayout class="layout">
     <Logo :size="16" />
     <Form />
-    <QuickJoinModal id="quick-join-modal" popover />
-    <CreateRoomModal id="create-room-modal" popover />
+    <QuickJoinModal />
+    <CreateRoomModal />
   </AppLayout>
 </template>
 

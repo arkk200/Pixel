@@ -12,7 +12,7 @@ const joinRoom = (playerCount: number) => {
 </script>
 
 <template>
-  <div class="quick-join-modal">
+  <div id="quick-join-modal" popover class="quick-join-modal">
     <p class="title">빠른 참가</p>
     <p class="player-number">플레이어 수</p>
     <div class="buttons">
