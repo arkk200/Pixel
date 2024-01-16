@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { State } from "@src/stores/types";
+import { State } from "@src/types";
 import { useStore } from "vuex";
 
 const store = useStore<State>();

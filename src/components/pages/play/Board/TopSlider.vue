@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { socket } from "@src/socket";
-import { State } from "@src/stores/types";
+import { State } from "@src/types";
 import { computed } from "vue";
 import { useStore } from "vuex";
 

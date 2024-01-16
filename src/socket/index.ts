@@ -1,7 +1,9 @@
-import { GAME_OVER_DATA_MESSAGE } from "@src/constants";
+import GameOverByDisconnectedModalVue from "@src/components/pages/main/GameOverByDisconnectedModal.vue";
+import { GAME_OVER_MESSAGE } from "@src/constants";
 import router from "@src/router";
 import { store } from "@src/stores";
 import { io } from "socket.io-client";
+import { useModal } from "vue-final-modal";
 
 const serverURL = import.meta.env.PROD ? null : import.meta.env.VITE_SERVER_URL;
 export const socket = io(serverURL);
@@ -16,13 +18,27 @@ socket.on("updateGame", (gameData) => {
   store.state.gameData = gameData;
 });
 
-socket.on("gameOver", async ({ message, winPlayer, order }) => {
-  if (message === GAME_OVER_DATA_MESSAGE.SOMEONE_DISCONNECTED) {
-    alert("누군가가 게임을 나갔습니다.");
+socket.on("gameOver", ({ message, winPlayer, losePlayer, whoseTurn }) => {
+  if (message === GAME_OVER_MESSAGE.SOMEONE_DISCONNECTED) {
+    const { open, close } = useModal({
+      component: GameOverByDisconnectedModalVue,
+      attrs: {
+        onConfirm() {
+          close();
+        },
+      },
+    });
+
     router.push("/");
     store.state.isInGame = false;
+    open();
   }
-  if (message === GAME_OVER_DATA_MESSAGE.SOMEONE_WON) {
-    alert(`${winPlayer.playerName} (${order})가 승리했습니다.`);
+
+  if (message === GAME_OVER_MESSAGE.SOMEONE_WON) {
+    alert(`${winPlayer.playerName} (${whoseTurn}번 플레이어)가 승리했습니다.`);
+  }
+
+  if (message === GAME_OVER_MESSAGE.SOMEONE_LOST) {
+    alert(`${losePlayer.playerName} (${whoseTurn}번 플레이어)가 패배했습니다.`);
   }
 });

@@ -5,7 +5,7 @@ import CloseIcon from "../../icons/CloseIcon.vue";
 <template>
   <div class="create-room-modal">
     <p class="title">방 만들기</p>
-    <p class="player-number">플레이어</p>
+    <p class="player-number">플레이어 수</p>
     <div class="buttons">
       <button>2명</button>
       <button>3명</button>

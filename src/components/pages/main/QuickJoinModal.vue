@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { socket } from "@src/socket";
-import { State } from "@src/stores/types";
+import { State } from "@src/types";
 import { useStore } from "vuex";
 import CloseIcon from "../../icons/CloseIcon.vue";
 
@@ -14,7 +14,7 @@ const joinRoom = (playerCount: number) => {
 <template>
   <div class="quick-join-modal">
     <p class="title">빠른 참가</p>
-    <p class="player-number">플레이어</p>
+    <p class="player-number">플레이어 수</p>
     <div class="buttons">
       <button @click="joinRoom(2)">2명</button>
       <button @click="joinRoom(3)">3명</button>
