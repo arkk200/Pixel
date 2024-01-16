@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { name, profileImage } = defineProps<{
+const { name: playerName, profileImage } = defineProps<{
   name: string;
   profileImage: string;
   isPlayerTurn: boolean;

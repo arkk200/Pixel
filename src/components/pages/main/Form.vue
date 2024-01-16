@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
+import { useStore } from "vuex";
 
-const name = ref("");
+const store = useStore();
+
+const playerName = reactive(store.state.playerName);
 </script>
 
 <template>
   <div class="form">
-    <div class="nickname-form">
-      <p class="nickname-label">닉네임</p>
-      <input v-model="name" class="nickname-input" />
+    <div class="player-name-form">
+      <p class="player-name-label">이름</p>
+      <input v-model="playerName" class="player-name-input" />
     </div>
     <div class="buttons">
       <button popovertarget="quick-join-modal">빠른 참가</button>
@@ -25,13 +28,13 @@ const name = ref("");
   max-width: 15rem;
 }
 
-.nickname-form .nickname-label {
+.player-name-form .player-name-label {
   color: white;
   margin-left: 0.7rem;
   font-size: 1rem;
   font-weight: 700;
 }
-.nickname-form .nickname-input {
+.player-name-form .player-name-input {
   width: 100%;
   margin-top: 0.7rem;
   box-sizing: border-box;

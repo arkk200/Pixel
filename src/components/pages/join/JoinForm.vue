@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const name = ref("");
+const playerName = ref("");
 </script>
 
 <template>
   <div class="form">
     <p class="invite-message">James의 방에 초대되었습니다.</p>
-    <div class="nickname-form">
-      <p class="nickname-label">닉네임</p>
-      <input v-model="name" class="nickname-input" />
+    <div class="player-name-form">
+      <p class="player-name-label">이름</p>
+      <input v-model="playerName" class="player-name-input" />
     </div>
     <button class="join-button">참가하기</button>
   </div>

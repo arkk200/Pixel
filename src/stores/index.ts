@@ -4,6 +4,7 @@ import { createStore } from "vuex";
 export const store = createStore({
   state() {
     return {
+      isInGame: false,
       gameData: {
         topSlider: {
           progress: INITIAL_SLIDER_PROGRESS,
@@ -27,6 +28,7 @@ export const store = createStore({
         whoseTurn: 0, // 인덱스
         playerList: [],
       },
+      playerName: "",
     };
   },
 });

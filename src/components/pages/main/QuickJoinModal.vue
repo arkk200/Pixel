@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { socket } from "@src/socket";
+import { useStore } from "vuex";
 import CloseIcon from "../../icons/CloseIcon.vue";
+
+const store = useStore();
+
+const joinRoom = (playerCount: number) => {
+  socket.emit("quickJoin", { playerCount, playerName: store.state.playerName });
+};
 </script>
 
 <template>
@@ -7,9 +15,9 @@ import CloseIcon from "../../icons/CloseIcon.vue";
     <p class="title">빠른 참가</p>
     <p class="player-number">플레이어</p>
     <div class="buttons">
-      <button>2명</button>
-      <button>3명</button>
-      <button>4명</button>
+      <button @click="joinRoom(2)">2명</button>
+      <button @click="joinRoom(3)">3명</button>
+      <button @click="joinRoom(4)">4명</button>
     </div>
     <button
       popovertarget="quick-join-modal"

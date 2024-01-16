@@ -4,7 +4,8 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const placeMok = () => {
-  let { topSlider, sideSlider, whoseTurn, board, playerList } = store.state;
+  let { topSlider, sideSlider, whoseTurn, board, playerList } =
+    store.state.gameData;
 
   // 이미 board에 목이 있다면 실행 못하게 막기
   const sideSliderIndex = normalizeProgress(sideSlider.progress),
@@ -46,6 +47,8 @@ const placeMok = () => {
   font-weight: 600;
 
   cursor: pointer;
+
+  word-break: keep-all;
 }
 .place-button:hover {
   filter: brightness(102%);

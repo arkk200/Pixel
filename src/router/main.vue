@@ -17,8 +17,6 @@ import QuickJoinModal from "@src/components/pages/main/QuickJoinModal.vue";
 
 <style scoped>
 .layout {
-  position: absolute;
   flex-direction: column;
-  z-index: 0;
 }
 </style>
