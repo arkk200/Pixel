@@ -11,14 +11,14 @@ const topSlider = computed(() => store.state.gameData.topSlider);
 
 // 사이드 슬라이더가 움직이면
 const initTopSlider = () => {
-  // 탑 슬라이더 제자리로 옮기기
-  topSlider.value.progress = topSlider.value.prevProgress;
-
-  // 바뀐 위치 알리기
+  // 바뀐 위치 알리고
   socket.emit("updateSlider", {
     sliderPosition: "SIDE",
     progress: sideSlider.value.progress,
   });
+
+  // 탑 슬라이더 제자리로 옮기기
+  topSlider.value.progress = topSlider.value.prevProgress;
 };
 </script>
 

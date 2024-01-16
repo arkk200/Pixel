@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { socket } from "@src/socket";
 import { State } from "@src/stores/types";
 import normalizeProgress from "@src/utils/normalizeProgress";
 import { useStore } from "vuex";
@@ -11,6 +12,9 @@ const placeMok = () => {
   // 이미 board에 목이 있다면 실행 못하게 막기
   const sideSliderIndex = normalizeProgress(sideSlider.progress),
     topSliderIndex = normalizeProgress(topSlider.progress);
+
+  socket.emit("placeMok", { topSliderIndex, sideSliderIndex });
+
   // -1(빈 공간)이 아니라면
   if (board[sideSliderIndex][topSliderIndex] !== -1) return;
 
