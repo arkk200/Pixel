@@ -1,5 +1,6 @@
 import GameOverByDisconnectedModalVue from "@src/components/pages/main/GameOverByDisconnectedModal.vue";
-import { GAME_OVER_MESSAGE } from "@src/constants";
+import GameOverByLoseModalVue from "@src/components/pages/main/GameOverByLoseModal.vue";
+import GameOverByWinModalVue from "@src/components/pages/main/GameOverByWinModal.vue";
 import router from "@src/router";
 import { store } from "@src/stores";
 import { io } from "socket.io-client";
@@ -18,27 +19,51 @@ socket.on("updateGame", (gameData) => {
   store.state.gameData = gameData;
 });
 
-socket.on("gameOver", ({ message, winPlayer, losePlayer, whoseTurn }) => {
-  if (message === GAME_OVER_MESSAGE.SOMEONE_DISCONNECTED) {
-    const { open, close } = useModal({
-      component: GameOverByDisconnectedModalVue,
-      attrs: {
-        onConfirm() {
-          close();
-        },
+socket.on("gameOver:disconnecting", () => {
+  const { open, close } = useModal({
+    component: GameOverByDisconnectedModalVue,
+    attrs: {
+      onConfirm() {
+        close();
       },
-    });
+    },
+  });
 
-    router.push("/");
-    store.state.isInGame = false;
-    open();
-  }
+  router.push("/");
+  store.state.isInGame = false;
+  open();
+});
 
-  if (message === GAME_OVER_MESSAGE.SOMEONE_WON) {
-    alert(`${winPlayer.playerName} (${whoseTurn}번 플레이어)가 승리했습니다.`);
-  }
+socket.on("gameOver:lose", ({ losePlayerName }) => {
+  const { open, close } = useModal({
+    component: GameOverByLoseModalVue,
+    attrs: {
+      profileImage:
+        "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
+      playerName: losePlayerName,
+      onConfirm() {
+        close();
+        router.push("/");
+        store.state.isInGame = false;
+      },
+    },
+  });
+  open();
+});
 
-  if (message === GAME_OVER_MESSAGE.SOMEONE_LOST) {
-    alert(`${losePlayer.playerName} (${whoseTurn}번 플레이어)가 패배했습니다.`);
-  }
+socket.on("gameOver:win", ({ winPlayerName }) => {
+  const { open, close } = useModal({
+    component: GameOverByWinModalVue,
+    attrs: {
+      profileImage:
+        "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
+      playerName: winPlayerName,
+      onConfirm() {
+        close();
+        router.push("/");
+        store.state.isInGame = false;
+      },
+    },
+  });
+  open();
 });

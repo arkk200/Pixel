@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { VueFinalModal } from "vue-final-modal";
 import CloseIcon from "../../icons/CloseIcon.vue";
-defineProps<{ onConfirm(): void }>();
+
+const { profileImage, playerName } = defineProps<{
+  profileImage?: string;
+  playerName?: string;
+  onConfirm(): void;
+}>();
 
 const emit = defineEmits<{ (e: "confirm"): void }>();
 </script>
@@ -10,7 +15,8 @@ const emit = defineEmits<{ (e: "confirm"): void }>();
   <VueFinalModal>
     <div class="backdrop">
       <div class="game-over-modal">
-        <p class="message">누군가가<br />게임을 나갔습니다.</p>
+        <p class="lose-message">{{ playerName }} 패</p>
+        <img class="profile-image" :src="profileImage" />
         <button class="close" @click="emit('confirm')">
           <CloseIcon class="close-icon" />
         </button>
@@ -28,20 +34,29 @@ const emit = defineEmits<{ (e: "confirm"): void }>();
   justify-content: center;
   background: rgb(0, 0, 0, 0.2);
 }
+
 .game-over-modal {
   position: relative;
-  padding: 1.25rem;
+  margin: auto;
+  padding: 0.9rem 2.75rem;
   border-radius: 0.75rem;
   background-color: white;
   box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
 }
 
-.message {
+.lose-message {
   color: black;
   text-align: center;
   font-size: 1.25rem;
   font-weight: 700;
-  line-height: 120%;
+}
+.profile-image {
+  width: 4rem;
+  height: 4rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .close {
