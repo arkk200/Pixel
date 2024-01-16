@@ -1,25 +1,18 @@
 <script setup lang="ts">
 import { State } from "@src/stores/types";
 import normalizeProgress from "@src/utils/normalizeProgress";
-import { onMounted, ref, watch } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import EmptyTile from "./EmptyTile.vue";
 import Tile from "./Tile.vue";
 
 const store = useStore<State>();
-const topSliderIndex = ref(0);
-const sideSliderIndex = ref(0);
-
-const updateSliderIndex = (state: typeof store.state) => {
-  topSliderIndex.value = normalizeProgress(state.gameData.topSlider.progress);
-  sideSliderIndex.value = normalizeProgress(state.gameData.sideSlider.progress);
-};
-
-onMounted(() => {
-  updateSliderIndex(store.state);
-});
-
-watch(store.state, updateSliderIndex);
+const topSliderIndex = computed(() =>
+  normalizeProgress(store.state.gameData.topSlider.progress)
+);
+const sideSliderIndex = computed(() =>
+  normalizeProgress(store.state.gameData.sideSlider.progress)
+);
 
 const isFocused = (x: number, y: number) => {
   return sideSliderIndex.value === x && topSliderIndex.value === y;
