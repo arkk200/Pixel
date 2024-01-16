@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { color } from "@src/styles/theme";
+
 const { playerIndex } = defineProps<{ playerIndex: -2 | -1 | 0 | 1 | 2 | 3 }>();
 </script>
 
@@ -27,19 +29,19 @@ const { playerIndex } = defineProps<{ playerIndex: -2 | -1 | 0 | 1 | 2 | 3 }>();
   box-shadow: inset 3px 3px 8px 1px rgb(77, 71, 71);
 }
 .player-0-hole {
-  background-color: #ff6200;
+  background-color: v-bind("color.player1.primary");
   box-shadow: 3px 3px 8px 1px rgb(77, 71, 71);
 }
 .player-1-hole {
-  background-color: #f9e902;
+  background-color: v-bind("color.player2.primary");
   box-shadow: 3px 3px 8px 1px rgb(77, 71, 71);
 }
 .player-2-hole {
-  background-color: #00e60c;
+  background-color: v-bind("color.player3.primary");
   box-shadow: 3px 3px 8px 1px rgb(77, 71, 71);
 }
 .player-3-hole {
-  background-color: #00a6ff;
+  background-color: v-bind("color.player4.primary");
   box-shadow: 3px 3px 8px 1px rgb(77, 71, 71);
 }
 </style>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { color } from "@src/styles/theme";
 const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
   defineProps<{
     playerName: string;
@@ -46,20 +47,20 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
   border-style: solid;
 }
 .player-1 {
-  border-color: #ed5700;
-  background-color: #ff6200;
+  border-color: v-bind("color.player1.secondary");
+  background-color: v-bind("color.player1.primary");
 }
 .player-2 {
-  border-color: #eede01;
-  background-color: #f9e902;
+  border-color: v-bind("color.player2.secondary");
+  background-color: v-bind("color.player2.primary");
 }
 .player-3 {
-  border-color: #01d220;
-  background-color: #00e60c;
+  border-color: v-bind("color.player3.secondary");
+  background-color: v-bind("color.player3.primary");
 }
 .player-4 {
-  border-color: #0096e2;
-  background-color: #00a6ff;
+  border-color: v-bind("color.player4.secondary");
+  background-color: v-bind("color.player4.primary");
 }
 
 .profile {
@@ -108,27 +109,25 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
 }
 
 .player-1 .time {
-  border: 0.4rem solid #ed5700;
-  background-color: #ff6200;
+  border: 0.4rem solid v-bind("color.player1.secondary");
+  background-color: v-bind("color.player1.primary");
 }
 .player-2 .time {
-  border: 0.4rem solid #eede01;
-  background-color: #f9e902;
+  border: 0.4rem solid v-bind("color.player2.secondary");
+  background-color: v-bind("color.player2.primary");
 }
 .player-3 .time {
-  border: 0.4rem solid #01d220;
-  background-color: #00e60c;
+  border: 0.4rem solid v-bind("color.player3.secondary");
+  background-color: v-bind("color.player3.primary");
 }
 .player-4 .time {
-  border: 0.4rem solid #0096e2;
-  background-color: #00a6ff;
+  border: 0.4rem solid v-bind("color.player4.secondary");
+  background-color: v-bind("color.player4.primary");
 }
 
 .is-player-turn {
   outline: 0.2rem solid;
   animation: pulsating-outline 2s infinite;
-  animation: name duration timing-function delay iteration-count direction
-    fill-mode;
 }
 
 @keyframes pulsating-outline {
