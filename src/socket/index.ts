@@ -21,7 +21,7 @@ socket.on("gameOver:disconnecting", () => {
   router.push("/").then(() => {
     store.state.isInGame = false;
 
-    toast.warning("누군가가 게임을 나갔습니다");
+    toast.warning("누군가가 게임을 떠났습니다");
   });
 });
 

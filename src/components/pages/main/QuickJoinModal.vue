@@ -9,10 +9,21 @@ const store = useStore<State>();
 const joinRoom = (playerCount: number) => {
   socket.emit("quickJoin", { playerCount, playerName: store.state.playerName });
 };
+
+const beforeToggle = (event: ToggleEvent) => {
+  if (event.newState === "closed") {
+    socket.emit("leaveQuickJoin");
+  }
+};
 </script>
 
 <template>
-  <div id="quick-join-modal" popover class="quick-join-modal">
+  <div
+    id="quick-join-modal"
+    popover
+    class="quick-join-modal"
+    @beforetoggle="beforeToggle"
+  >
     <p class="title">빠른 참가</p>
     <p class="player-number">플레이어 수</p>
     <div class="buttons">
