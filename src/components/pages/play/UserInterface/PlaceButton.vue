@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { State } from "@src/stores/types";
 import normalizeProgress from "@src/utils/normalizeProgress";
 import { useStore } from "vuex";
 
-const store = useStore();
+const store = useStore<State>();
 const placeMok = () => {
   let { topSlider, sideSlider, whoseTurn, board, playerList } =
     store.state.gameData;
@@ -21,7 +22,8 @@ const placeMok = () => {
   store.state.gameData.sideSlider.prevProgress = sideSlider.progress;
 
   // 순서 한 차례 이동하기
-  store.state.gameData.whoseTurn = (whoseTurn + 1) % playerList.length;
+  store.state.gameData.whoseTurn = ((whoseTurn + 1) %
+    playerList.length) as State["gameData"]["whoseTurn"];
 };
 </script>
 

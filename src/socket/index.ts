@@ -14,5 +14,4 @@ socket.on("startGame", (gameData) => {
 
 socket.on("updateGame", (gameData) => {
   store.state.gameData = gameData;
-  console.log(gameData);
 });

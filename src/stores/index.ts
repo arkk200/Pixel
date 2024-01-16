@@ -1,7 +1,8 @@
 import { INITIAL_SLIDER_PROGRESS } from "@src/constants";
 import { createStore } from "vuex";
+import { State } from "./types";
 
-export const store = createStore({
+export const store = createStore<State>({
   state() {
     return {
       isInGame: false,

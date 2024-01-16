@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { State } from "@src/stores/types";
 import { useStore } from "vuex";
 
-const store = useStore();
-
-const playerName = reactive(store.state.playerName);
+const store = useStore<State>();
 </script>
 
 <template>
   <div class="form">
     <div class="player-name-form">
       <p class="player-name-label">이름</p>
-      <input v-model="playerName" class="player-name-input" />
+      <input v-model="store.state.playerName" class="player-name-input" />
     </div>
     <div class="buttons">
       <button popovertarget="quick-join-modal">빠른 참가</button>

@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const { name: playerName, profileImage } = defineProps<{
-  name: string;
-  profileImage: string;
-  isPlayerTurn: boolean;
-  order: 1 | 2 | 3 | 4;
-}>();
+const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
+  defineProps<{
+    playerName: string;
+    profileImage: string;
+    isPlayerTurn: boolean;
+    order: 1 | 2 | 3 | 4;
+    remainSeconds: number;
+  }>();
+
+console.log(remainSeconds);
 </script>
 
 <template>
@@ -12,10 +16,16 @@ const { name: playerName, profileImage } = defineProps<{
     class="player"
     :class="[`player-${order}`, { 'is-player-turn': isPlayerTurn }]"
   >
-    <p class="time" :class="{ 'is-player-turn': isPlayerTurn }">25:00</p>
+    <p class="time" :class="{ 'is-player-turn': isPlayerTurn }">
+      {{
+        Math.floor(remainSeconds / 60)
+          .toString()
+          .padStart(2, "0")
+      }}:{{ (remainSeconds % 60).toString().padStart(2, "0") }}
+    </p>
     <div class="profile">
       <img class="profile-image" :src="profileImage" />
-      <p class="name">{{ name }}</p>
+      <p class="name">{{ playerName }}</p>
     </div>
   </div>
 </template>

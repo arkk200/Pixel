@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { socket } from "@src/socket";
+import { State } from "@src/stores/types";
 import { useStore } from "vuex";
 import CloseIcon from "../../icons/CloseIcon.vue";
 
-const store = useStore();
+const store = useStore<State>();
 
 const joinRoom = (playerCount: number) => {
   socket.emit("quickJoin", { playerCount, playerName: store.state.playerName });
