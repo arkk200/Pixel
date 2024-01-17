@@ -1,22 +1,5 @@
 import { store } from "@src/stores";
-import {
-  NavigationGuardNext,
-  RouteLocationNormalized,
-  createRouter,
-  createWebHistory,
-} from "vue-router";
-
-const beforeEnterPlayPage = (
-  _to: RouteLocationNormalized,
-  _from: RouteLocationNormalized,
-  next: NavigationGuardNext
-) => {
-  if (store.state.isInGame) {
-    next();
-    return;
-  }
-  next("/");
-};
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(""),
@@ -26,9 +9,14 @@ const router = createRouter({
       path: "/play",
       name: "play",
       component: () => import("./play.vue"),
-      beforeEnter: beforeEnterPlayPage,
+      beforeEnter: (_, __, next) => (store.state.isInGame ? next() : next("/")),
     },
-    { path: "/room", name: "room", component: () => import("./room.vue") },
+    {
+      path: "/room",
+      name: "room",
+      component: () => import("./room.vue"),
+      beforeEnter: (_, __, next) => (store.state.isInRoom ? next() : next("/")),
+    },
     {
       path: "/join/:roomId",
       name: "join",

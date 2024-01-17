@@ -1,45 +1,22 @@
 <script setup lang="ts">
+import { State } from "@src/types";
+import { computed } from "vue";
+import { useStore } from "vuex";
 import WaitingPlayer from "./WaitingPlayer.vue";
 
-const PLAYER = 4;
-const WAITING_PLAYER_LIST = [
-  {
-    id: 1,
-    profileImage:
-      "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-    name: "James",
-  },
-  {
-    id: 2,
-    profileImage:
-      "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-    name: "Jake",
-  },
-  {
-    id: 3,
-    profileImage:
-      "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-    name: "John",
-  },
-  // {
-  //   id: 4,
-  //   profileImage:
-  //     "https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg",
-  //   name: "Jay",
-  // },
-];
+const store = useStore<State>();
+
+const playerCount = computed(() => store.state.roomData.playerCount);
+const waitingPlayerList = computed(() => store.state.roomData.playerList);
 </script>
 
 <template>
   <div class="waiting-player-list">
-    <div
-      v-for="(_, i) in Array(PLAYER).fill(null)"
-      :key="WAITING_PLAYER_LIST[i]?.id"
-    >
+    <div v-for="(_, i) in Array(playerCount).fill(null)" :key="i">
       <WaitingPlayer
-        v-if="Boolean(WAITING_PLAYER_LIST[i])"
-        :name="WAITING_PLAYER_LIST[i].name"
-        :profile-image="WAITING_PLAYER_LIST[i].profileImage"
+        v-if="Boolean(waitingPlayerList[i])"
+        :player-name="waitingPlayerList[i].playerName"
+        :profile-image="`https://cdn.pixabay.com/photo/2020/04/04/09/55/cat-5001570_1280.jpg`"
       />
       <div v-else class="empty-spot"></div>
     </div>

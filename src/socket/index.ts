@@ -7,6 +7,13 @@ import { toast } from "vue3-toastify";
 const serverURL = import.meta.env.PROD ? null : import.meta.env.VITE_SERVER_URL;
 export const socket = io(serverURL);
 
+socket.on("createRoom", (roomData) => {
+  store.state.roomData = roomData;
+  store.state.isInRoom = true;
+
+  router.push("/room");
+});
+
 socket.on("startGame", (gameData) => {
   store.state.isInGame = true;
   store.state.gameData = gameData;

@@ -5,6 +5,15 @@ import { createStore } from "vuex";
 export const store = createStore<State>({
   state() {
     return {
+      playerName: "",
+
+      isInRoom: false,
+      roomData: {
+        roomID: null,
+        playerCount: null,
+        playerList: [],
+      },
+
       isInGame: false,
       gameData: {
         topSlider: {
@@ -29,7 +38,6 @@ export const store = createStore<State>({
         whoseTurn: 0, // 인덱스
         playerList: [],
       },
-      playerName: "",
     };
   },
 });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { name: playerName, profileImage } = defineProps<{
-  name: string;
+const { playerName, profileImage } = defineProps<{
+  playerName: string;
   profileImage: string;
 }>();
 </script>
@@ -8,7 +8,7 @@ const { name: playerName, profileImage } = defineProps<{
 <template>
   <div class="waiting-player">
     <img class="profile-image" :src="profileImage" />
-    <p class="name">{{ name }}</p>
+    <p class="name">{{ playerName }}</p>
   </div>
 </template>
 

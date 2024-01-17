@@ -1,5 +1,17 @@
 <script setup lang="ts">
+import { socket } from "@src/socket";
+import type { PlayerCount } from "@src/types";
+import { useStore } from "vuex";
 import CloseIcon from "../../icons/CloseIcon.vue";
+
+const store = useStore();
+
+const createRoom = (playerCount: PlayerCount) => {
+  socket.emit("createRoom", {
+    playerCount,
+    playerName: store.state.playerName,
+  });
+};
 </script>
 
 <template>
@@ -7,9 +19,9 @@ import CloseIcon from "../../icons/CloseIcon.vue";
     <p class="title">방 만들기</p>
     <p class="player-number">플레이어 수</p>
     <div class="buttons">
-      <button>2명</button>
-      <button>3명</button>
-      <button>4명</button>
+      <button @click="createRoom(2)">2명</button>
+      <button @click="createRoom(3)">3명</button>
+      <button @click="createRoom(4)">4명</button>
     </div>
     <button
       popovertarget="create-room-modal"
