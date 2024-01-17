@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import LinkIcon from "@src/components/icons/LinkIcon.vue";
 import PlayIcon from "@src/components/icons/PlayIcon.vue";
+import { socket } from "@src/socket";
 import { State } from "@src/types";
+import { computed } from "vue";
 import { toast } from "vue3-toastify";
 import { useStore } from "vuex";
 
 const store = useStore<State>();
+const isHost = computed(
+  () => store.state.roomData.playerList[0].socketID === socket.id
+);
 
 const copyInviteLink = async () => {
   await navigator.clipboard.writeText(
@@ -21,7 +26,7 @@ const copyInviteLink = async () => {
       <LinkIcon class="icon" />
       <span>초대</span>
     </button>
-    <button>
+    <button v-if="isHost">
       <PlayIcon class="icon" />
       <span>시작</span>
     </button>
