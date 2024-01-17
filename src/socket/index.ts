@@ -14,6 +14,17 @@ socket.on("createRoom", (roomData) => {
   router.push("/room");
 });
 
+socket.on("joinRoom", (roomData) => {
+  store.state.roomData = roomData;
+  store.state.isInRoom = true;
+
+  router.push("/room");
+});
+
+socket.on("updateRoom", ({ playerList }) => {
+  store.state.roomData.playerList = playerList;
+});
+
 socket.on("startGame", (gameData) => {
   store.state.isInGame = true;
   store.state.gameData = gameData;

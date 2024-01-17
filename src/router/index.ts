@@ -18,7 +18,7 @@ const router = createRouter({
       beforeEnter: (_, __, next) => (store.state.isInRoom ? next() : next("/")),
     },
     {
-      path: "/join/:roomId",
+      path: "/join/:roomID",
       name: "join",
       component: () => import("./join.vue"),
     },

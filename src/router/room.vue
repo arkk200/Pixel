@@ -4,8 +4,18 @@ import LinkIcon from "@src/components/icons/LinkIcon.vue";
 import PlayIcon from "@src/components/icons/PlayIcon.vue";
 import AppLayout from "@src/components/layouts/AppLayout.vue";
 import WaitingPlayerList from "@src/components/pages/room/WaitingPlayerList.vue";
+import { State } from "@src/types";
+import { toast } from "vue3-toastify";
+import { useStore } from "vuex";
 
-// 소켓 연결
+const store = useStore<State>();
+
+const copyInviteLink = async () => {
+  await navigator.clipboard.writeText(
+    `http://localhost:5173/join/${store.state.roomData.roomID}`
+  );
+  toast.success("복사 완료!");
+};
 </script>
 
 <template>
@@ -14,7 +24,7 @@ import WaitingPlayerList from "@src/components/pages/room/WaitingPlayerList.vue"
       <Logo :size="10" />
       <WaitingPlayerList />
       <div class="buttons">
-        <button>
+        <button @click="copyInviteLink">
           <LinkIcon class="icon" />
           <span>초대</span>
         </button>

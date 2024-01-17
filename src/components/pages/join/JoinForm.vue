@@ -1,17 +1,28 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { socket } from "@src/socket";
+import { State } from "@src/types";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 
-const playerName = ref("");
+const store = useStore<State>();
+const route = useRoute();
+
+const joinRoom = () => {
+  socket.emit("joinRoom", {
+    roomID: route.params.roomID,
+    playerName: store.state.playerName,
+  });
+};
 </script>
 
 <template>
   <div class="form">
-    <p class="invite-message">James의 방에 초대되었습니다.</p>
+    <p class="invite-message">방에 초대되었습니다.</p>
     <div class="player-name-form">
       <p class="player-name-label">이름</p>
-      <input v-model="playerName" class="player-name-input" />
+      <input v-model="store.state.playerName" class="player-name-input" />
     </div>
-    <button class="join-button">참가하기</button>
+    <button class="join-button" @click="joinRoom">참가하기</button>
   </div>
 </template>
 
@@ -29,13 +40,13 @@ const playerName = ref("");
   font-weight: 600;
 }
 
-.nickname-form .nickname-label {
+.player-name-form .player-name-label {
   color: white;
   margin-left: 0.7rem;
   font-size: 1rem;
   font-weight: 700;
 }
-.nickname-form .nickname-input {
+.player-name-form .player-name-input {
   width: 15rem;
   margin-top: 0.7rem;
   box-sizing: border-box;
