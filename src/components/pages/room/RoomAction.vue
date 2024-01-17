@@ -18,6 +18,10 @@ const copyInviteLink = async () => {
   );
   toast.success("복사 완료!");
 };
+
+const startGame = () => {
+  socket.emit("startGame");
+};
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const copyInviteLink = async () => {
       <LinkIcon class="icon" />
       <span>초대</span>
     </button>
-    <button v-if="isHost">
+    <button v-if="isHost" @click="startGame">
       <PlayIcon class="icon" />
       <span>시작</span>
     </button>
