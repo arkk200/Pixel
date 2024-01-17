@@ -10,7 +10,14 @@ const sideSlider = computed(() => store.state.gameData.sideSlider);
 const topSlider = computed(() => store.state.gameData.topSlider);
 
 // 사이드 슬라이더가 움직이면
-const initTopSlider = () => {
+const inputSideSlider = (e: Event) => {
+  const { playerList, whoseTurn } = store.state.gameData;
+
+  if (playerList[whoseTurn].socketID !== socket.id) return; // 내 차례가 아니면 무시
+
+  const sideSliderProgress = (e.target as HTMLInputElement).value;
+  store.state.gameData.sideSlider.progress = Number(sideSliderProgress);
+
   // 바뀐 위치 알리고
   socket.emit("updateSlider", {
     sliderPosition: "SIDE",
@@ -37,8 +44,8 @@ const initTopSlider = () => {
       }"
     />
     <input
-      v-model="sideSlider.progress"
-      @input="initTopSlider"
+      :value="sideSlider.progress"
+      @input="inputSideSlider"
       class="slider-input"
       type="range"
       min="0"
