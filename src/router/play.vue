@@ -5,7 +5,7 @@ import UserInterface from "@src/components/pages/play/UserInterface/UserInterfac
 </script>
 
 <template>
-  <AppLayout>
+  <AppLayout flex-direction="row">
     <Board />
     <UserInterface class="user-interface" />
   </AppLayout>

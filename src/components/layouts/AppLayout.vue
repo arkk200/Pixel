@@ -1,7 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { CSSProperties } from "vue";
+
+const props = defineProps<{
+  flexDirection?: CSSProperties["flex-direction"];
+}>();
+</script>
 
 <template>
-  <div class="layout">
+  <div
+    class="layout"
+    :style="{ 'flex-direction': props.flexDirection || 'column' }"
+  >
     <slot />
   </div>
 </template>

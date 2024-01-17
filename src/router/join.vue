@@ -8,16 +8,8 @@ console.log(route.params.roomId);
 </script>
 
 <template>
-  <AppLayout class="layout">
+  <AppLayout>
     <Logo :size="16" />
     <JoinForm />
   </AppLayout>
 </template>
-
-<style scoped>
-.layout {
-  position: absolute;
-  flex-direction: column;
-  z-index: 0;
-}
-</style>
