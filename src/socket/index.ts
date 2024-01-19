@@ -4,7 +4,9 @@ import { color } from "@src/styles/theme";
 import { io } from "socket.io-client";
 import { toast } from "vue3-toastify";
 
-const serverURL = import.meta.env.PROD ? null : import.meta.env.VITE_SERVER_URL;
+const serverURL = import.meta.env.PROD
+  ? import.meta.env.VITE_PROD_SERVER_URL
+  : import.meta.env.VITE_SERVER_URL;
 export const socket = io(serverURL);
 
 socket.on("createRoom", (roomData) => {
