@@ -7,7 +7,7 @@ import { toast } from "vue3-toastify";
 const serverURL = import.meta.env.PROD
   ? import.meta.env.VITE_PROD_SERVER_URL
   : import.meta.env.VITE_SERVER_URL;
-export const socket = io(serverURL);
+export const socket = io(serverURL, { secure: true });
 
 socket.on("createRoom", (roomData) => {
   store.state.roomData = roomData;
