@@ -34,9 +34,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          # Upload entire repository
           node-version: 18
-          path: '.'
       - name: Install dependencies
         run: yarn
       - name: Build
@@ -46,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
