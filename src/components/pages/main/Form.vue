@@ -15,6 +15,13 @@ const store = useStore<State>();
       <button popovertarget="quick-join-modal">빠른 참가</button>
       <button popovertarget="create-room-modal">방 만들기</button>
     </div>
+    <a
+      class="rule-video-link"
+      href="https://youtu.be/NTtyd3CVp5o?si=Cjn6rgCkz6t-KClT"
+      target="_blank"
+    >
+      플레이 하는 법
+    </a>
   </div>
 </template>
 
@@ -22,6 +29,7 @@ const store = useStore<State>();
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   max-width: 15rem;
 }
@@ -47,6 +55,7 @@ const store = useStore<State>();
 .buttons {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 .buttons button {
   padding: 0.75rem 1rem;
@@ -63,5 +72,9 @@ const store = useStore<State>();
 .buttons button:active {
   transform: translate(0.1rem, 0.1rem);
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+
+.rule-video-link {
+  color: white;
 }
 </style>
