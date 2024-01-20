@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const { size = 16 } = defineProps<{ size?: number }>();
+import { CSSProperties } from "vue";
+
+const { size = 16 } = defineProps<{ size?: CSSProperties["font-size"] }>();
 </script>
 
 <template>
-  <div class="logo" :style="{ fontSize: `${size}px` }">
+  <div class="logo" :style="{ fontSize: size }">
     <img src="/assets/pixel-board.png" class="logo-image" />
     <p class="logo-title"><span>PIXEL.IO</span></p>
   </div>

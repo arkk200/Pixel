@@ -15,7 +15,7 @@ import TopSlider from "./TopSlider.vue";
 <style scoped>
 .container {
   background-color: white;
-  box-shadow: 3px 3px 100px 1px rgba(77, 71, 71, 0.5);
+  box-shadow: 0.1875rem 0.1875rem 6.25rem 0.0625rem rgba(77, 71, 71, 0.5);
   width: min-content;
   border-radius: 6rem;
   display: grid;

@@ -6,7 +6,7 @@ import JoinForm from "@src/components/pages/join/JoinForm.vue";
 
 <template>
   <AppLayout>
-    <Logo :size="16" />
+    <Logo size="1rem" />
     <JoinForm />
   </AppLayout>
 </template>

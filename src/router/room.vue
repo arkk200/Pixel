@@ -18,7 +18,7 @@ onUnmounted(() => {
 
 <template>
   <AppLayout>
-    <Logo :size="10" />
+    <Logo size="0.625rem" />
     <WaitingPlayerList />
     <RoomAction />
   </AppLayout>

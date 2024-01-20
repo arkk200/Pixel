@@ -34,13 +34,13 @@ const inputSideSlider = (e: Event) => {
     <div
       class="thumb preview"
       :style="{
-        '--prev-progress': `${sideSlider.prevProgress}px`,
+        '--prev-progress': `${sideSlider.prevProgress / 16}rem`,
       }"
     />
     <div
       class="thumb"
       :style="{
-        '--progress': `${sideSlider.progress}px`,
+        '--progress': `${sideSlider.progress / 16}rem`,
       }"
     />
     <input
@@ -62,7 +62,7 @@ const inputSideSlider = (e: Event) => {
   width: 1rem;
   height: calc(100% - 4rem);
   margin: 2rem 0;
-  box-shadow: inset 0 -1px 5px 2px rgba(77, 71, 71, 0.5);
+  box-shadow: inset 0 -0.0625rem 0.3125rem 0.125rem rgba(77, 71, 71, 0.5);
   justify-self: center;
 
   transform: rotate(180deg) scaleX(-1);
@@ -88,7 +88,7 @@ const inputSideSlider = (e: Event) => {
 .slider-input {
   appearance: none;
   writing-mode: vertical-lr;
-  width: 16px;
+  width: 1rem;
   height: 100%;
   position: absolute;
   top: 50%;

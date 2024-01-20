@@ -32,6 +32,6 @@ const props = defineProps<{
   padding: 3rem 6rem;
 
   background-color: #00686e;
-  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 12.5rem rgba(0, 0, 0, 0.9);
 }
 </style>
