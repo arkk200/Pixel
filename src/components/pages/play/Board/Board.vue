@@ -15,12 +15,12 @@ import TopSlider from "./TopSlider.vue";
 <style scoped>
 .container {
   background-color: white;
-  box-shadow: 0.1875rem 0.1875rem 6.25rem 0.0625rem rgba(77, 71, 71, 0.5);
+  box-shadow: 0.09375rem 0.09375rem 3.125rem 0.03125rem rgba(77, 71, 71, 0.5);
   width: min-content;
-  border-radius: 6rem;
+  border-radius: 3rem;
   display: grid;
-  grid-template-rows: 6rem min-content 6rem;
-  grid-template-columns: 6rem min-content 6rem;
+  grid-template-rows: 3rem min-content 3rem;
+  grid-template-columns: 3rem min-content 3rem;
 }
 .tiles {
   grid-row: 2 / 3;

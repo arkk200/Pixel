@@ -8,40 +8,42 @@ const { playerIndex } = defineProps<{ playerIndex: -2 | -1 | 0 | 1 | 2 | 3 }>();
   <div class="tile">
     <div
       class="hole"
-      :class="{ [`player-${playerIndex}-hole`]: playerIndex !== -1 }"
+      :class="{
+        [`player-${playerIndex}-hole`]: playerIndex !== -1,
+        'player-hole': playerIndex !== -1,
+      }"
     ></div>
   </div>
 </template>
 
 <style scoped>
 .tile {
-  width: 5rem;
-  height: 5rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: white;
 }
 .hole {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
-  box-shadow: inset 0.1875rem 0.1875rem 0.5rem 0.0625rem rgb(77, 71, 71);
+  box-shadow: inset 0.09375rem 0.09375rem 0.25rem 0.03125rem rgb(77, 71, 71);
+}
+.player-hole {
+  box-shadow: 0.09375rem 0.09375rem 0.25rem 0.03125rem rgb(77, 71, 71);
 }
 .player-0-hole {
   background-color: v-bind("color.player1.primary");
-  box-shadow: 0.1875rem 0.1875rem 0.5rem 0.0625rem rgb(77, 71, 71);
 }
 .player-1-hole {
   background-color: v-bind("color.player2.primary");
-  box-shadow: 0.1875rem 0.1875rem 0.5rem 0.0625rem rgb(77, 71, 71);
 }
 .player-2-hole {
   background-color: v-bind("color.player3.primary");
-  box-shadow: 0.1875rem 0.1875rem 0.5rem 0.0625rem rgb(77, 71, 71);
 }
 .player-3-hole {
   background-color: v-bind("color.player4.primary");
-  box-shadow: 0.1875rem 0.1875rem 0.5rem 0.0625rem rgb(77, 71, 71);
 }
 </style>

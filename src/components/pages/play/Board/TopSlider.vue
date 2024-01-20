@@ -34,13 +34,13 @@ const inputTopSlider = (e: Event) => {
     <div
       class="thumb preview"
       :style="{
-        '--prev-progress': `${topSlider.prevProgress / 16}rem`,
+        '--prev-progress': `${topSlider.prevProgress / 16 / 2}rem`,
       }"
     />
     <div
       class="thumb"
       :style="{
-        '--progress': `${topSlider.progress / 16}rem`,
+        '--progress': `${topSlider.progress / 16 / 2}rem`,
       }"
     />
     <input
@@ -58,19 +58,19 @@ const inputTopSlider = (e: Event) => {
 <style scoped>
 .slider {
   position: relative;
-  height: 1rem;
-  margin: 0 2rem;
-  box-shadow: inset 0 -0.0625rem 0.3125rem 0.125rem rgba(77, 71, 71, 0.5);
+  height: 0.5rem;
+  margin: 0 1rem;
+  box-shadow: inset 0 -0.03125rem 0.15625rem 0.0625rem rgba(77, 71, 71, 0.5);
   align-self: center;
 }
 
 .thumb {
   position: absolute;
-  top: -0.5rem;
+  top: -0.25rem;
   left: calc(var(--progress));
 
-  width: 3rem;
-  height: 4.5rem;
+  width: 1.5rem;
+  height: 2.25rem;
 
   background-color: black;
   clip-path: polygon(0 0, 100% 0, 100% 33%, 50% 100%, 0 33%);

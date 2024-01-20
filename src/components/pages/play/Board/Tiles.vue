@@ -39,15 +39,15 @@ const isFocused = (x: number, y: number) => {
   background-color: black;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   width: min-content;
-  padding: 2rem;
+  padding: 1rem;
 }
 .row {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 .is-focused {
-  outline: 0.4rem solid rgb(0, 242, 255);
+  outline: 0.2rem solid rgb(0, 242, 255);
 }
 </style>
