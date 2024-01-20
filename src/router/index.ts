@@ -2,7 +2,7 @@ import { store } from "@src/stores";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory(""),
+  history: createWebHistory("PIXEL/"),
   routes: [
     { path: "/", name: "main", component: () => import("./main.vue") },
     {
