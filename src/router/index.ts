@@ -1,24 +1,24 @@
 import { store } from "@src/stores";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory("PIXEL/"),
   routes: [
-    { path: "/PIXEL/", name: "main", component: () => import("./main.vue") },
+    { path: "/", name: "main", component: () => import("./main.vue") },
     {
-      path: "/PIXEL/play",
+      path: "/play",
       name: "play",
       component: () => import("./play.vue"),
       beforeEnter: (_, __, next) => (store.state.isInGame ? next() : next("/")),
     },
     {
-      path: "/PIXEL/room",
+      path: "/room",
       name: "room",
       component: () => import("./room.vue"),
       beforeEnter: (_, __, next) => (store.state.isInRoom ? next() : next("/")),
     },
     {
-      path: "/PIXEL/join/:roomID",
+      path: "/join/:roomID",
       name: "join",
       component: () => import("./join.vue"),
     },

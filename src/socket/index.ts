@@ -13,14 +13,14 @@ socket.on("createRoom", (roomData) => {
   store.state.roomData = roomData;
   store.state.isInRoom = true;
 
-  router.push("/PIXEL/room");
+  router.push("/room");
 });
 
 socket.on("joinRoom", (roomData) => {
   store.state.roomData = roomData;
   store.state.isInRoom = true;
 
-  router.push("/PIXEL/room");
+  router.push("/room");
 });
 
 socket.on("updateRoom", ({ playerList }) => {
@@ -30,7 +30,7 @@ socket.on("updateRoom", ({ playerList }) => {
 socket.on("startGame", (gameData) => {
   store.state.isInGame = true;
   store.state.gameData = gameData;
-  router.push("/PIXEL/play");
+  router.push("/play");
 });
 
 socket.on("updateGame", (gameData) => {
@@ -38,7 +38,7 @@ socket.on("updateGame", (gameData) => {
 });
 
 socket.on("gameOver:disconnecting", () => {
-  router.push("/PIXEL/").then(() => {
+  router.push("/").then(() => {
     store.state.isInGame = false;
 
     toast.warning("누군가가 게임을 떠났습니다");
