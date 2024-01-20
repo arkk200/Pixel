@@ -37,6 +37,8 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: yarn
+        env:
+          VITE_PROD_SERVER_URL: ${{ secrets.VITE_PROD_SERVER_URL }}
       - name: Build
         run: yarn build
       - name: Setup Pages
