@@ -13,6 +13,6 @@ import PlayerList from "./PlayerList.vue";
 .user-interface {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 </style>

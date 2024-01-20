@@ -5,7 +5,7 @@ import JoinForm from "@src/components/pages/join/JoinForm.vue";
 </script>
 
 <template>
-  <AppLayout>
+  <AppLayout flex-direction="column">
     <Logo size="1rem" />
     <JoinForm />
   </AppLayout>

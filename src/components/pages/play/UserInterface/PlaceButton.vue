@@ -41,15 +41,15 @@ const placeMok = () => {
   align-items: center;
   justify-content: center;
 
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 0.75rem;
 
-  border-radius: 0.75rem;
+  border-radius: 0.375rem;
 
-  border: 0.4rem solid rgb(208, 206, 206);
+  border: 0.2rem solid rgb(208, 206, 206);
   background-color: rgb(219, 219, 219);
 
   color: white;
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
 
   cursor: pointer;

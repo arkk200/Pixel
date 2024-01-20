@@ -27,6 +27,6 @@ const gameData = computed(() => store.state.gameData);
 .player-list {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 0.8rem;
 }
 </style>

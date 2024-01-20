@@ -3,14 +3,12 @@ import { CSSProperties } from "vue";
 
 const props = defineProps<{
   flexDirection?: CSSProperties["flex-direction"];
+  gap?: CSSProperties["gap"];
 }>();
 </script>
 
 <template>
-  <div
-    class="layout"
-    :style="{ 'flex-direction': props.flexDirection || 'column' }"
-  >
+  <div class="layout" :style="{ gap }">
     <slot />
   </div>
 </template>
@@ -22,6 +20,7 @@ const props = defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: v-bind("props.flexDirection");
 
   width: 100%;
   min-width: min-content;
@@ -29,9 +28,15 @@ const props = defineProps<{
   min-height: 100vh;
 
   margin: 0 auto;
-  padding: 3rem 6rem;
+  padding: 1.5rem 3rem;
 
   background-color: #00686e;
   box-shadow: inset 0 0 12.5rem rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 480px) {
+  .layout {
+    flex-direction: column;
+  }
 }
 </style>

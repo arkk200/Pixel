@@ -37,13 +37,13 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
   flex-direction: column;
   justify-content: center;
 
-  width: 18rem;
-  min-height: 6.75rem;
-  padding: 0 2rem;
+  width: 9rem;
+  min-height: 3.375rem;
+  padding: 0 1rem;
   box-sizing: border-box;
 
-  border-radius: 0.75rem;
-  border-width: 0.4rem;
+  border-radius: 0.374rem;
+  border-width: 0.2rem;
   border-style: solid;
 }
 .player-1 {
@@ -69,20 +69,20 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
   justify-content: space-between;
 }
 .profile-image {
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
 }
 .name {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 
   overflow: hidden;
   text-overflow: ellipsis;
 
   color: white;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 .time {
@@ -91,17 +91,17 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
   display: flex;
   justify-content: center;
 
-  width: 6rem;
+  width: 3rem;
 
-  padding: 0.15rem 0;
+  padding: 0.075rem 0;
 
-  top: -1.5rem;
+  top: -0.75rem;
   left: 50%;
   transform: translate(-50%);
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
 
   color: white;
-  font-size: 1.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
   text-align: center;
 
@@ -109,24 +109,24 @@ const { playerName, profileImage, remainSeconds, isPlayerTurn, order } =
 }
 
 .player-1 .time {
-  border: 0.4rem solid v-bind("color.player1.secondary");
+  border: 0.2rem solid v-bind("color.player1.secondary");
   background-color: v-bind("color.player1.primary");
 }
 .player-2 .time {
-  border: 0.4rem solid v-bind("color.player2.secondary");
+  border: 0.2rem solid v-bind("color.player2.secondary");
   background-color: v-bind("color.player2.primary");
 }
 .player-3 .time {
-  border: 0.4rem solid v-bind("color.player3.secondary");
+  border: 0.2rem solid v-bind("color.player3.secondary");
   background-color: v-bind("color.player3.primary");
 }
 .player-4 .time {
-  border: 0.4rem solid v-bind("color.player4.secondary");
+  border: 0.2rem solid v-bind("color.player4.secondary");
   background-color: v-bind("color.player4.primary");
 }
 
 .is-player-turn {
-  outline: 0.2rem solid;
+  outline: 0.1rem solid;
   animation: pulsating-outline 2s infinite;
 }
 

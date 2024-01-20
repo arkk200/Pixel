@@ -7,7 +7,7 @@ import QuickJoinModal from "@src/components/pages/main/QuickJoinModal.vue";
 </script>
 
 <template>
-  <AppLayout>
+  <AppLayout flex-direction="column">
     <Logo size="1rem" />
     <Form />
     <QuickJoinModal />

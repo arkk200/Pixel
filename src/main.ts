@@ -6,5 +6,6 @@ import router from "./router";
 import { store } from "./stores";
 import "./styles/font.css";
 import "./styles/normalize.css";
+import "./styles/style.css";
 
 createApp(App).use(store).use(router).use(Vue3Toastify).mount("#app");

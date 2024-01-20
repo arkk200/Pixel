@@ -17,7 +17,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <AppLayout>
+  <AppLayout flex-direction="column">
     <Logo size="0.625rem" />
     <WaitingPlayerList />
     <RoomAction />

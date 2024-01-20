@@ -15,14 +15,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <AppLayout flex-direction="row">
+  <AppLayout flex-direction="row" gap="2rem 3rem">
     <Board />
     <UserInterface class="user-interface" />
   </AppLayout>
 </template>
 
-<style scoped>
-.user-interface {
-  margin-left: 6rem;
-}
-</style>
+<style scoped></style>
