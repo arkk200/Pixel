@@ -7,15 +7,17 @@ import EmptyTile from "./EmptyTile.vue";
 import Tile from "./Tile.vue";
 
 const store = useStore<State>();
-const topSliderIndex = computed(() =>
+const topSliderProgressIndex = computed(() =>
   normalizeProgress(store.state.gameData.topSlider.progress)
 );
-const sideSliderIndex = computed(() =>
+const sideSliderProgressIndex = computed(() =>
   normalizeProgress(store.state.gameData.sideSlider.progress)
 );
 
 const isFocused = (x: number, y: number) => {
-  return sideSliderIndex.value === x && topSliderIndex.value === y;
+  return (
+    sideSliderProgressIndex.value === x && topSliderProgressIndex.value === y
+  );
 };
 </script>
 

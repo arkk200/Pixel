@@ -10,16 +10,20 @@ const placeMok = () => {
     store.state.gameData;
 
   // 이미 board에 목이 있다면 실행 못하게 막기
-  const sideSliderIndex = normalizeProgress(sideSlider.progress),
-    topSliderIndex = normalizeProgress(topSlider.progress);
+  const sideSliderProgressIndex = normalizeProgress(sideSlider.progress),
+    topSliderProgressIndex = normalizeProgress(topSlider.progress);
 
-  socket.emit("placeMok", { topSliderIndex, sideSliderIndex });
+  socket.emit("placeMok", {
+    topSliderProgressIndex,
+    sideSliderProgressIndex,
+  });
 
   // -1(빈 공간)이 아니라면
-  if (board[sideSliderIndex][topSliderIndex] !== -1) return;
+  if (board[sideSliderProgressIndex][topSliderProgressIndex] !== -1) return;
 
   // board에 목 추가하기
-  store.state.gameData.board[sideSliderIndex][topSliderIndex] = whoseTurn;
+  store.state.gameData.board[sideSliderProgressIndex][topSliderProgressIndex] =
+    whoseTurn;
 
   // 슬라이더 prevProgress 값 바꾸기
   store.state.gameData.topSlider.prevProgress = topSlider.progress;
