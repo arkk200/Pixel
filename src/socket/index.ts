@@ -46,6 +46,7 @@ socket.on("gameOver:disconnecting", () => {
 });
 
 socket.on("gameOver:lose", ({ losePlayerName, whoseTurn }) => {
+  store.state.gameData.isGameEnd = true;
   toast(`${losePlayerName}이/가 졌습니다`, {
     position: "top-center",
     theme: "colored",
@@ -58,6 +59,7 @@ socket.on("gameOver:lose", ({ losePlayerName, whoseTurn }) => {
 });
 
 socket.on("gameOver:4mokWin", ({ winPlayerName, whoseTurn }) => {
+  store.state.gameData.isGameEnd = true;
   toast(`${winPlayerName}이/가 이겼습니다`, {
     position: "top-center",
     theme: "colored",
@@ -69,23 +71,20 @@ socket.on("gameOver:4mokWin", ({ winPlayerName, whoseTurn }) => {
   });
 });
 
-socket.on(
-  "gameOver:blocked",
-  ({
-    winPlayerList,
-  }: {
-    winPlayerList: { playerName: string; order: number }[];
-  }) => {
-    winPlayerList.forEach((winPlayer) => {
-      toast(`${winPlayer.playerName}이/가 이겼습니다`, {
-        position: "top-center",
-        theme: "colored",
-        toastStyle: {
-          backgroundColor:
-            color[`player${winPlayer.order + 1}` as keyof typeof color].primary,
-          color: "white",
-        },
-      });
+type GameOverByBlockedEvent = {
+  winPlayerList: { playerName: string; order: number }[];
+};
+socket.on("gameOver:blocked", ({ winPlayerList }: GameOverByBlockedEvent) => {
+  store.state.gameData.isGameEnd = true;
+  winPlayerList.forEach((winPlayer) => {
+    toast(`${winPlayer.playerName}이/가 이겼습니다`, {
+      position: "top-center",
+      theme: "colored",
+      toastStyle: {
+        backgroundColor:
+          color[`player${winPlayer.order + 1}` as keyof typeof color].primary,
+        color: "white",
+      },
     });
-  }
-);
+  });
+});

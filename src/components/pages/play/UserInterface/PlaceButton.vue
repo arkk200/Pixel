@@ -49,7 +49,7 @@ const placeMok = () => {
 
   border-radius: 0.375rem;
 
-  border: 0.2rem solid rgb(208, 206, 206);
+  border: 0.2rem solid rgb(206, 206, 206);
   background-color: rgb(219, 219, 219);
 
   color: white;

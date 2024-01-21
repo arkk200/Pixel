@@ -37,6 +37,7 @@ export const store = createStore<State>({
         ],
         whoseTurn: 0, // 인덱스
         playerList: [],
+        isGameEnd: false,
       },
     };
   },

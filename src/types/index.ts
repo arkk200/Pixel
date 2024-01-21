@@ -27,6 +27,7 @@ type GameData = {
   board: Tuple<Tuple<-2 | -1 | 0 | 1 | 2 | 3, 8>, 8>;
   playerList: Player[];
   whoseTurn: 0 | 1 | 2 | 3;
+  isGameEnd: boolean;
 };
 
 export type State = {
