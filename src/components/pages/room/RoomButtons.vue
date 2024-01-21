@@ -14,7 +14,7 @@ const isHost = computed(
 
 const copyInviteLink = async () => {
   await navigator.clipboard.writeText(
-    `${window.location.origin}/join/${store.state.roomData.roomID}`
+    `${window.location.origin}/PIXEL/#/join/${store.state.roomData.roomID}`
   );
   toast.success("복사 완료!");
 };
