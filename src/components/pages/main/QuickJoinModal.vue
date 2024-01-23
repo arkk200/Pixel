@@ -1,17 +1,24 @@
 <script setup lang="ts">
+import LoadingIcon from "@src/components/icons/LoadingIcon.vue";
 import { socket } from "@src/socket";
-import { State } from "@src/types";
+import { PlayerCount, State } from "@src/types";
+import { Ref, ref } from "vue";
 import { useStore } from "vuex";
 import CloseIcon from "../../icons/CloseIcon.vue";
 
 const store = useStore<State>();
 
-const joinRoom = (playerCount: number) => {
+const waitingPlayerCount: Ref<2 | 3 | 4 | null> = ref(null);
+
+const joinRoom = (playerCount: PlayerCount) => {
+  if (waitingPlayerCount.value) return;
+  waitingPlayerCount.value = playerCount;
   socket.emit("quickJoin", { playerCount, playerName: store.state.playerName });
 };
 
 const beforeToggle = (event: ToggleEvent) => {
   if (event.newState === "closed") {
+    waitingPlayerCount.value = null;
     socket.emit("leaveQuickJoin");
   }
 };
@@ -27,9 +34,24 @@ const beforeToggle = (event: ToggleEvent) => {
     <p class="title">빠른 참가</p>
     <p class="player-number">플레이어 수</p>
     <div class="buttons">
-      <button @click="joinRoom(2)">2명</button>
-      <button @click="joinRoom(3)">3명</button>
-      <button @click="joinRoom(4)">4명</button>
+      <button @click="joinRoom(2)">
+        <span v-if="waitingPlayerCount === 2">
+          <LoadingIcon />
+        </span>
+        <span v-else>2명</span>
+      </button>
+      <button @click="joinRoom(3)">
+        <span v-if="waitingPlayerCount === 3">
+          <LoadingIcon />
+        </span>
+        <span v-else>3명</span>
+      </button>
+      <button @click="joinRoom(4)">
+        <span v-if="waitingPlayerCount === 4">
+          <LoadingIcon />
+        </span>
+        <span v-else>4명</span>
+      </button>
     </div>
     <button
       popovertarget="quick-join-modal"
@@ -76,6 +98,7 @@ const beforeToggle = (event: ToggleEvent) => {
 
 .buttons button {
   padding: 0.5rem 1rem;
+  width: 4rem;
   background-image: url(/assets/wood.jpg);
   box-shadow: 0.2rem 0.2rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
   color: white;
@@ -89,6 +112,11 @@ const beforeToggle = (event: ToggleEvent) => {
 .buttons button:active {
   transform: translate(0.1rem, 0.1rem);
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+.buttons button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close {
