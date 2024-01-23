@@ -23,6 +23,13 @@ const joinRoom = () => {
       <input v-model="store.state.playerName" class="player-name-input" />
     </div>
     <button class="join-button" @click="joinRoom">참가하기</button>
+    <a
+      class="rule-video-link"
+      href="https://youtu.be/NTtyd3CVp5o?si=Cjn6rgCkz6t-KClT"
+      target="_blank"
+    >
+      플레이 하는 법
+    </a>
   </div>
 </template>
 
@@ -74,5 +81,9 @@ const joinRoom = () => {
 .join-button:active {
   transform: translate(0.1rem, 0.1rem);
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+
+.rule-video-link {
+  color: white;
 }
 </style>
