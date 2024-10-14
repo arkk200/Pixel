@@ -16,7 +16,7 @@ const inputSideSlider = (e: Event) => {
   if (playerList[whoseTurn].socketID !== socket.id) return; // 내 차례가 아니면 무시
 
   const sideSliderProgress = (e.target as HTMLInputElement).value;
-  store.state.gameData.sideSlider.progress = Number(sideSliderProgress);
+  store.state.gameData.sideSlider.progress = 648 - Number(sideSliderProgress);
 
   // 바뀐 위치 알리고
   socket.emit("updateSlider", {
