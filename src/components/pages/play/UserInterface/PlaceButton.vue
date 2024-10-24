@@ -21,6 +21,9 @@ const placeMok = () => {
   // -1(빈 공간)이 아니라면
   if (board[sideSliderProgressIndex][topSliderProgressIndex] !== -1) return;
 
+  // 내 차례가 아니라면
+  if (playerList[whoseTurn].socketID !== socket.id) return;
+
   // board에 목 추가하기
   store.state.gameData.board[sideSliderProgressIndex][topSliderProgressIndex] =
     whoseTurn;

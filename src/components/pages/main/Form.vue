@@ -1,19 +1,30 @@
 <script setup lang="ts">
 import { State } from "@src/types";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore<State>();
+
+const isPlayerNameEmpty = computed(() => !store.state.playerName.length);
 </script>
 
 <template>
   <div class="form">
     <div class="player-name-form">
       <p class="player-name-label">이름</p>
-      <input v-model="store.state.playerName" class="player-name-input" />
+      <input
+        class="player-name-input"
+        v-model="store.state.playerName"
+        @input="e => {store.state.playerName = (e.target as HTMLInputElement).value.slice(0, 5)}"
+      />
     </div>
     <div class="buttons">
-      <button popovertarget="quick-join-modal">빠른 참가</button>
-      <button popovertarget="create-room-modal">방 만들기</button>
+      <button :disabled="isPlayerNameEmpty" popovertarget="quick-join-modal">
+        빠른 참가
+      </button>
+      <button :disabled="isPlayerNameEmpty" popovertarget="create-room-modal">
+        방 만들기
+      </button>
     </div>
     <a
       class="rule-video-link"
@@ -66,12 +77,16 @@ const store = useStore<State>();
   font-size: 1.25rem;
   font-weight: 600;
 }
-.buttons button:hover {
+.buttons button:hover:not(:disabled) {
   filter: brightness(103%);
 }
-.buttons button:active {
+.buttons button:active:not(:disabled) {
   transform: translate(0.1rem, 0.1rem);
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+.buttons button:disabled {
+  filter: grayscale(100%);
+  cursor: default;
 }
 
 .rule-video-link {

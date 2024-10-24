@@ -20,9 +20,19 @@ const joinRoom = () => {
     <p class="invite-message">방에 초대되었습니다.</p>
     <div class="player-name-form">
       <p class="player-name-label">이름</p>
-      <input v-model="store.state.playerName" class="player-name-input" />
+      <input
+        class="player-name-input"
+        v-model="store.state.playerName"
+        @input="e => {store.state.playerName = (e.target as HTMLInputElement).value.slice(0, 5)}"
+      />
     </div>
-    <button class="join-button" @click="joinRoom">참가하기</button>
+    <button
+      :disabled="!store.state.playerName.length"
+      class="join-button"
+      @click="joinRoom"
+    >
+      참가하기
+    </button>
     <a
       class="rule-video-link"
       href="https://youtu.be/NTtyd3CVp5o?si=Cjn6rgCkz6t-KClT"
@@ -75,12 +85,16 @@ const joinRoom = () => {
   font-size: 1.25rem;
   font-weight: 600;
 }
-.join-button:hover {
+.join-button:hover:not(:disabled) {
   filter: brightness(103%);
 }
-.join-button:active {
+.join-button:active:not(:disabled) {
   transform: translate(0.1rem, 0.1rem);
   box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+.join-button:disabled {
+  filter: grayscale(100%);
+  cursor: default;
 }
 
 .rule-video-link {
